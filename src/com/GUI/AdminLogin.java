@@ -19,8 +19,10 @@ public class AdminLogin extends JFrame {
 
     //Boton de entrar por ahora se entra con Usuario: admin y Contraseña: admin
     private void button1ActionPerformed(ActionEvent e) {
-        // TODO add your code here
-        if(userField.getText().equals("admin") && passwordField.getPassword().equals("admin")){
+        //La funcion getPassword() te lo devuelve como un char[]
+        //por eso hay que hacer el cast cuando queremos hacer el equal
+        String passwordString = new String(passwordField.getPassword());
+        if(userField.getText().equals("admin") && passwordString.equals("admin")){
             JFrame adminMain = new AdminMain();
             adminMain.setVisible(true);
             adminMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -40,11 +42,6 @@ public class AdminLogin extends JFrame {
         mainLogin.setResizable(false);
         this.setVisible(false);
     }
-
-    private void button2ActionPerformed(ActionEvent e) {
-        // TODO add your code here
-    }
-
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - unknown
@@ -79,14 +76,12 @@ public class AdminLogin extends JFrame {
         button1.setFont(new Font("Doctor Glitch", Font.PLAIN, 12));
         button1.addActionListener(e -> {
 			button1ActionPerformed(e);
-			button1ActionPerformed(e);
 		});
 
         //---- button2 ----
         button2.setText("Back");
         button2.setFont(new Font("Doctor Glitch", Font.PLAIN, 12));
         button2.addActionListener(e -> {
-			button2ActionPerformed(e);
 			backActionPerformed(e);
 		});
 

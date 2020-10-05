@@ -4,6 +4,7 @@ import javax.swing.*;
 /**
  * FedePochat
  */
+
 public class Main {
     public static void main(String[] args) {
         JFrame frame = new LoginForm();
