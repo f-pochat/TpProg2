@@ -4,6 +4,9 @@
 
 package com.GUI;
 
+import com.Users.AdminReader;
+import com.Users.UserWriterReader;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -16,15 +19,16 @@ public class LoginForm extends JFrame {
         initComponents();
     }
 
-    //Boton de entrar por ahora se entra con Tel: 1234 y CUIL: 5678
     private void button1ActionPerformed(ActionEvent e) {
         // TODO add your code here
-        if(telField.getText().equals("1234") && cuilField.getText().equals("5678")){
+        //Se fija si existe ese usuario en users.txt
+        if(UserWriterReader.findTelandCuil(telField.getText(),cuilField.getText())){
             JFrame mainScene = new MainPage();
             mainScene.setVisible(true);
             mainScene.setResizable(false);
             mainScene.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             this.setVisible(false);
+            //Sino salta el mensaje
         }else{
             JOptionPane.showMessageDialog(null, "Tel y/o Cuil Incorrecto");
         }
@@ -41,6 +45,16 @@ public class LoginForm extends JFrame {
         this.setVisible(false);
     }
 
+    private void button3ActionPerformed(ActionEvent e) {
+        // TODO add your code here
+        JFrame registerScene = new RegisterUser();
+        registerScene.setVisible(true);
+        registerScene.setResizable(false);
+        registerScene.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setVisible(false);
+
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - unknown
@@ -51,6 +65,7 @@ public class LoginForm extends JFrame {
         label5 = new JLabel();
         button1 = new JButton();
         button2 = new JButton();
+        button3 = new JButton();
 
         //======== this ========
         setBackground(new Color(102, 204, 255));
@@ -80,6 +95,11 @@ public class LoginForm extends JFrame {
         button2.setFont(new Font("Doctor Glitch", Font.PLAIN, 12));
         button2.addActionListener(e -> button2ActionPerformed(e));
 
+        //---- button3 ----
+        button3.setText("Registarse");
+        button3.setFont(new Font("Doctor Glitch", Font.PLAIN, 12));
+        button3.addActionListener(e -> button3ActionPerformed(e));
+
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
@@ -97,7 +117,7 @@ public class LoginForm extends JFrame {
                         .addComponent(cuilField, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
                     .addContainerGap(167, Short.MAX_VALUE))
                 .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
-                    .addContainerGap(264, Short.MAX_VALUE)
+                    .addContainerGap(238, Short.MAX_VALUE)
                     .addGroup(contentPaneLayout.createParallelGroup()
                         .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
                             .addComponent(label5)
@@ -107,7 +127,9 @@ public class LoginForm extends JFrame {
                             .addGap(34, 34, 34))
                         .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
                             .addComponent(button1)
-                            .addGap(237, 237, 237))))
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(button3)
+                            .addGap(185, 185, 185))))
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
@@ -116,7 +138,7 @@ public class LoginForm extends JFrame {
                     .addComponent(button2)
                     .addGap(30, 30, 30)
                     .addComponent(label5)
-                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                     .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(label3)
                         .addComponent(telField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
@@ -125,7 +147,9 @@ public class LoginForm extends JFrame {
                         .addComponent(label4)
                         .addComponent(cuilField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                     .addGap(80, 80, 80)
-                    .addComponent(button1)
+                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(button1)
+                        .addComponent(button3))
                     .addGap(59, 59, 59))
         );
         pack();
@@ -142,6 +166,7 @@ public class LoginForm extends JFrame {
     private JLabel label5;
     private JButton button1;
     private JButton button2;
+    private JButton button3;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
 
