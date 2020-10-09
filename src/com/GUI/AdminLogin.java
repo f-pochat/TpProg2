@@ -81,14 +81,12 @@ public class AdminLogin extends JFrame {
         button1.setFont(new Font("Doctor Glitch", Font.PLAIN, 12));
         button1.addActionListener(e -> {
 			button1ActionPerformed(e);
-			button1ActionPerformed(e);
 		});
 
         //---- button2 ----
         button2.setText("Back");
         button2.setFont(new Font("Doctor Glitch", Font.PLAIN, 12));
         button2.addActionListener(e -> {
-			button2ActionPerformed(e);
 			backActionPerformed(e);
 		});
 
