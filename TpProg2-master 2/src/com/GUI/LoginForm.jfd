@@ -1,0 +1,58 @@
+JFDML JFormDesigner: "7.0.2.6.321" Java: "11.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq l {space :p:201:p, par l {comp label3:::p::p, seq t {comp label4:::p::p, space :p:25:p}}, space :p:31:p, par l:::p {comp telField::::130:x, comp cuilField::::130:x}, space ::167:x}, seq t {space ::238:x, par l {seq t {comp label5:::p::p, space :p:220:p}, seq t {comp button2:::p::p, space :p:34:p}, seq t {comp button1:::p::p, space u:::p, comp button3:::p::p, space :p:185:p}}}}"
+			"$verticalGroup": "par l {seq t {space :p:35:p, comp button2:::p::p, space :p:30:p, comp label5:::p::p, space ::64:x, par b {comp label3::b:p::p, comp telField::b:p::p}, space s:::p, par b {comp label4::b:p::p, comp cuilField::b:p::p}, space :p:80:p, par b {comp button1::b:p::p, comp button3::b:p::p}, space :p:59:p}}"
+		} ) {
+			name: "this"
+			"background": new java.awt.Color( 102, 204, 255, 255 )
+			"iconImage": sfield com.jformdesigner.model.FormObject NULL_VALUE
+			"title": "TraceIT"
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+				"text": "Telefono"
+				"font": new java.awt.Font( "Doctor Glitch", 0, 12 )
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "telField"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label4"
+				"text": "CUIL"
+				"font": new java.awt.Font( "Doctor Glitch", 0, 12 )
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "cuilField"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label5"
+				"text": "TraceIT"
+				"font": new java.awt.Font( "Doctor Glitch", 0, 26 )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button1"
+				"text": "Entrar"
+				"font": new java.awt.Font( "Doctor Glitch", 0, 12 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button2"
+				"text": "Admin"
+				"font": new java.awt.Font( "Doctor Glitch", 0, 12 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button2ActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button3"
+				"text": "Registarse"
+				"font": new java.awt.Font( "Doctor Glitch", 0, 12 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button3ActionPerformed", true ) )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 5, 0 )
+			"size": new java.awt.Dimension( 600, 470 )
+		} )
+	}
+}
