@@ -1,3 +1,7 @@
 admin,admin
 seba,1234
-fede,5678
+fede,1234
+nacho,1234
+juan,1234
+maru,1234
+mel,1234

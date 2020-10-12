@@ -1,0 +1,45 @@
+JFDML JFormDesigner: "7.0.2.6.321" Java: "11.0.7" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq l {space :p:174:p, par t {comp button3:::p:277:p, comp button2:::p:277:p, comp button1:::p:277:p}, space ::147:x}, seq t {space ::236:x, comp label5:::p::p, space :p:214:p}}"
+			"$verticalGroup": "par l {seq l {space :p:94:p, comp label5:::p::p, space :p:49:p, comp button1:::p::p, space s:::p, comp button2:::p::p, space s:::p, comp button3:::p::p, space ::145:x}}"
+		} ) {
+			name: "this"
+			"iconImage": sfield com.jformdesigner.model.FormObject NULL_VALUE
+			"resizable": false
+			"title": "TraceIT"
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label5"
+				"text": "Ciudadanos"
+				"font": new java.awt.Font( "Doctor Glitch", 0, 26 )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button1"
+				"text": "Indicar contacto estrecho"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button2"
+				"text": "Presencia de sintomas"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button3"
+				"text": "Mapa"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 600, 470 )
+		} )
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {space :0:600:x}"
+			"$verticalGroup": "par l {space :0:440:x}"
+		} ) {
+			name: "menu"
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 30 )
+			"size": new java.awt.Dimension( 600, 440 )
+		} )
+	}
+}
