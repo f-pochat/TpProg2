@@ -7,7 +7,8 @@ package com.GUI;
 import com.GUI.Admins.AdminLogin;
 import com.GUI.Users.RegisterUser;
 import com.GUI.Users.UsersMain;
-import com.txt.UserWriterReader;
+import com.ReadersWriter.UserWriterReader;
+
 
 import java.awt.*;
 import java.awt.event.*;

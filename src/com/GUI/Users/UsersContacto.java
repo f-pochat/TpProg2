@@ -7,7 +7,7 @@ import java.beans.PropertyChangeListener;
 import java.util.Date;
 import javax.swing.*;
 
-import com.txt.UserWriterReader;
+import com.ReadersWriter.UserWriterReader;
 
 
 public class UsersContacto extends JFrame implements PropertyChangeListener {

@@ -5,7 +5,7 @@
 package com.GUI.Admins;
 
 import com.GUI.LoginForm;
-import com.txt.AdminReader;
+import com.ReadersWriter.AdminReader;
 
 import java.awt.*;
 import java.awt.event.*;
