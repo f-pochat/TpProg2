@@ -1,62 +1,71 @@
 /*
- * Created by JFormDesigner on Sun Oct 04 15:18:15 ART 2020
+ * Created by JFormDesigner on Sun Oct 04 14:29:35 ART 2020
  */
 
 package com.GUI;
 
 import com.Users.AdminReader;
+import com.Users.UserWriterReader;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.GroupLayout;
-
 /**
  * FedePochat
  */
-public class AdminLogin extends JFrame {
-    public AdminLogin() {
+public class LoginForm extends JFrame {
+    public LoginForm() {
         initComponents();
     }
 
-    //Se fija si existe ese usuario en admin.txt
     private void button1ActionPerformed(ActionEvent e) {
-        String passwordString = new String(passwordField.getPassword());
-        if(AdminReader.findUserandPassword(userField.getText(),passwordString)){
-            JFrame adminMain = new AdminMain();
-            adminMain.setVisible(true);
-            adminMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            adminMain.setResizable(false);
+        // TODO add your code here
+        //Se fija si existe ese usuario en users.txt
+        if(UserWriterReader.findTelandCuil(telField.getText(),cuilField.getText())){
+            JFrame usersMain = new UsersMain();
+            usersMain.setVisible(true);
+            usersMain.setResizable(false);
+            usersMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             this.setVisible(false);
             //Sino salta el mensaje
         }else{
-            JOptionPane.showMessageDialog(null, "Usuario y/o Contraseña incorrecta");
+            JOptionPane.showMessageDialog(null, "Tel y/o Cuil Incorrecto");
         }
+
     }
 
-    //Boton para volver a el Login normal
-    private void backActionPerformed(ActionEvent e) {
+    //Boton para ir al Login de Admin
+    private void button2ActionPerformed(ActionEvent e) {
         // TODO add your code here
-        JFrame mainLogin = new LoginForm();
-        mainLogin.setVisible(true);
-        mainLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mainLogin.setResizable(false);
+        JFrame adminLog = new AdminLogin();
+        adminLog.setVisible(true);
+        adminLog.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        adminLog.setResizable(false);
         this.setVisible(false);
     }
 
-    private void button2ActionPerformed(ActionEvent e) {
+    private void button3ActionPerformed(ActionEvent e) {
         // TODO add your code here
+        JFrame registerScene = new RegisterUser();
+        registerScene.setVisible(true);
+        registerScene.setResizable(false);
+        registerScene.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setVisible(false);
+
     }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - unknown
         label3 = new JLabel();
-        userField = new JTextField();
+        telField = new JTextField();
         label4 = new JLabel();
+        cuilField = new JTextField();
         label5 = new JLabel();
         button1 = new JButton();
         button2 = new JButton();
-        passwordField = new JPasswordField();
+        button3 = new JButton();
 
         //======== this ========
         setBackground(new Color(102, 204, 255));
@@ -65,11 +74,11 @@ public class AdminLogin extends JFrame {
         var contentPane = getContentPane();
 
         //---- label3 ----
-        label3.setText("Usuario");
+        label3.setText("Telefono");
         label3.setFont(new Font("Doctor Glitch", Font.PLAIN, 12));
 
         //---- label4 ----
-        label4.setText("Contrasena");
+        label4.setText("CUIL");
         label4.setFont(new Font("Doctor Glitch", Font.PLAIN, 12));
 
         //---- label5 ----
@@ -79,16 +88,17 @@ public class AdminLogin extends JFrame {
         //---- button1 ----
         button1.setText("Entrar");
         button1.setFont(new Font("Doctor Glitch", Font.PLAIN, 12));
-        button1.addActionListener(e -> {
-			button1ActionPerformed(e);
-		});
+        button1.addActionListener(e -> button1ActionPerformed(e));
 
         //---- button2 ----
-        button2.setText("Back");
+        button2.setText("Admin");
         button2.setFont(new Font("Doctor Glitch", Font.PLAIN, 12));
-        button2.addActionListener(e -> {
-			backActionPerformed(e);
-		});
+        button2.addActionListener(e -> button2ActionPerformed(e));
+
+        //---- button3 ----
+        button3.setText("Registarse");
+        button3.setFont(new Font("Doctor Glitch", Font.PLAIN, 12));
+        button3.addActionListener(e -> button3ActionPerformed(e));
 
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
@@ -103,11 +113,11 @@ public class AdminLogin extends JFrame {
                             .addGap(25, 25, 25)))
                     .addGap(31, 31, 31)
                     .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                        .addComponent(userField, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                        .addComponent(passwordField, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
-                    .addContainerGap(120, Short.MAX_VALUE))
+                        .addComponent(telField, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                        .addComponent(cuilField, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
+                    .addContainerGap(167, Short.MAX_VALUE))
                 .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
-                    .addContainerGap(264, Short.MAX_VALUE)
+                    .addContainerGap(238, Short.MAX_VALUE)
                     .addGroup(contentPaneLayout.createParallelGroup()
                         .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
                             .addComponent(label5)
@@ -117,7 +127,9 @@ public class AdminLogin extends JFrame {
                             .addGap(34, 34, 34))
                         .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
                             .addComponent(button1)
-                            .addGap(237, 237, 237))))
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(button3)
+                            .addGap(185, 185, 185))))
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
@@ -126,17 +138,18 @@ public class AdminLogin extends JFrame {
                     .addComponent(button2)
                     .addGap(30, 30, 30)
                     .addComponent(label5)
-                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                     .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(label3)
-                        .addComponent(userField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                        .addComponent(telField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                     .addGap(18, 18, 18)
-                    .addGroup(contentPaneLayout.createParallelGroup()
-                        .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addComponent(label4)
-                            .addGap(86, 86, 86)
-                            .addComponent(button1))
-                        .addComponent(passwordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(label4)
+                        .addComponent(cuilField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                    .addGap(80, 80, 80)
+                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(button1)
+                        .addComponent(button3))
                     .addGap(59, 59, 59))
         );
         pack();
@@ -147,11 +160,14 @@ public class AdminLogin extends JFrame {
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - unknown
     private JLabel label3;
-    private JTextField userField;
+    private JTextField telField;
     private JLabel label4;
+    private JTextField cuilField;
     private JLabel label5;
     private JButton button1;
     private JButton button2;
-    private JPasswordField passwordField;
+    private JButton button3;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
+
+
 }

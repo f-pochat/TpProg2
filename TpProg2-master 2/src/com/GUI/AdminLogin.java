@@ -49,7 +49,7 @@ public class AdminLogin extends JFrame {
     }
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - unknown
+        // Generated using JFormDesigner Evaluation license - Ignacio Ferrari
         label3 = new JLabel();
         userField = new JTextField();
         label4 = new JLabel();
@@ -81,12 +81,14 @@ public class AdminLogin extends JFrame {
         button1.setFont(new Font("Doctor Glitch", Font.PLAIN, 12));
         button1.addActionListener(e -> {
 			button1ActionPerformed(e);
+			button1ActionPerformed(e);
 		});
 
         //---- button2 ----
         button2.setText("Back");
         button2.setFont(new Font("Doctor Glitch", Font.PLAIN, 12));
         button2.addActionListener(e -> {
+			button2ActionPerformed(e);
 			backActionPerformed(e);
 		});
 
@@ -105,12 +107,12 @@ public class AdminLogin extends JFrame {
                     .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                         .addComponent(userField, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
                         .addComponent(passwordField, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
-                    .addContainerGap(120, Short.MAX_VALUE))
+                    .addContainerGap(145, Short.MAX_VALUE))
                 .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
-                    .addContainerGap(264, Short.MAX_VALUE)
+                    .addContainerGap(283, Short.MAX_VALUE)
                     .addGroup(contentPaneLayout.createParallelGroup()
                         .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
-                            .addComponent(label5)
+                            .addComponent(label5, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGap(220, 220, 220))
                         .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
                             .addComponent(button2)
@@ -126,7 +128,7 @@ public class AdminLogin extends JFrame {
                     .addComponent(button2)
                     .addGap(30, 30, 30)
                     .addComponent(label5)
-                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                     .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(label3)
                         .addComponent(userField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
@@ -145,7 +147,7 @@ public class AdminLogin extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - unknown
+    // Generated using JFormDesigner Evaluation license - Ignacio Ferrari
     private JLabel label3;
     private JTextField userField;
     private JLabel label4;
