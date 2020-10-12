@@ -17,7 +17,7 @@ public class AdminMain extends JFrame {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - unknown
+        // Generated using JFormDesigner Evaluation license - Ignacio Ferrari
         label1 = new JLabel();
 
         //======== this ========
@@ -30,17 +30,17 @@ public class AdminMain extends JFrame {
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
             contentPaneLayout.createParallelGroup()
-                .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
-                    .addContainerGap(303, Short.MAX_VALUE)
+                .addGroup(contentPaneLayout.createSequentialGroup()
+                    .addGap(276, 276, 276)
                     .addComponent(label1)
-                    .addGap(275, 275, 275))
+                    .addContainerGap(278, Short.MAX_VALUE))
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
                 .addGroup(contentPaneLayout.createSequentialGroup()
-                    .addGap(185, 185, 185)
+                    .addGap(138, 138, 138)
                     .addComponent(label1)
-                    .addContainerGap(237, Short.MAX_VALUE))
+                    .addContainerGap(292, Short.MAX_VALUE))
         );
         pack();
         setLocationRelativeTo(getOwner());
@@ -48,7 +48,7 @@ public class AdminMain extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - unknown
+    // Generated using JFormDesigner Evaluation license - Ignacio Ferrari
     private JLabel label1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

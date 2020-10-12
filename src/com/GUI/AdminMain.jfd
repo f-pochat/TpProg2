@@ -1,11 +1,11 @@
-JFDML JFormDesigner: "7.0.2.6.321" Java: "11.0.6" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.2.6.321" Java: "11.0.7" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq t {space ::303:x, comp label1:::p::p, space :p:275:p}}"
-			"$verticalGroup": "par l {seq l {space :p:185:p, comp label1:::p::p, space ::237:x}}"
+			"$horizontalGroup": "par l {seq l {space :p:276:p, comp label1:::p::p, space ::278:x}}"
+			"$verticalGroup": "par l {seq l {space :p:138:p, comp label1:::p::p, space ::292:x}}"
 		} ) {
 			name: "this"
 			add( new FormComponent( "javax.swing.JLabel" ) {

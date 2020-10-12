@@ -15,18 +15,22 @@ import javax.swing.GroupLayout;
  * FedePochat
  */
 public class LoginForm extends JFrame {
+    public static String getTel;
+
     public LoginForm() {
         initComponents();
     }
+    public String tel;
 
     private void button1ActionPerformed(ActionEvent e) {
         // TODO add your code here
         //Se fija si existe ese usuario en users.txt
         if(UserWriterReader.findTelandCuil(telField.getText(),cuilField.getText())){
-            JFrame mainScene = new MainPage();
-            mainScene.setVisible(true);
-            mainScene.setResizable(false);
-            mainScene.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            tel = telField.getText();
+            JFrame usersMain = new UsersMain();
+            usersMain.setVisible(true);
+            usersMain.setResizable(false);
+            usersMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             this.setVisible(false);
             //Sino salta el mensaje
         }else{
@@ -168,6 +172,8 @@ public class LoginForm extends JFrame {
     private JButton button2;
     private JButton button3;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
-
+    public String getTel (){ // Lo uso en UsersContacto
+        return tel;
+    }
 
 }

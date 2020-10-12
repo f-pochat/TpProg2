@@ -40,10 +40,10 @@ public class RegisterUser extends JFrame {
                 //Sino escribir y registrar ese usuario y entrar
             }else{
                 UserWriterReader.addUser(telField.getText(),cuilField.getText());
-                JFrame mainScene = new MainPage();
-                mainScene.setVisible(true);
-                mainScene.setResizable(false);
-                mainScene.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                JFrame usersMain = new UsersMain();
+                usersMain.setVisible(true);
+                usersMain.setResizable(false);
+                usersMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 this.setVisible(false);
             }
             //Sino salta el mensaje
@@ -54,7 +54,7 @@ public class RegisterUser extends JFrame {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - unknown
+        // Generated using JFormDesigner Evaluation license - Ignacio Ferrari
         label3 = new JLabel();
         telField = new JTextField();
         label4 = new JLabel();
@@ -144,7 +144,7 @@ public class RegisterUser extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - unknown
+    // Generated using JFormDesigner Evaluation license - Ignacio Ferrari
     private JLabel label3;
     private JTextField telField;
     private JLabel label4;
