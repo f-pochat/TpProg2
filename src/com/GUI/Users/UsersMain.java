@@ -1,5 +1,7 @@
 package com.GUI.Users;
 
+import com.GUI.LoginForm;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import javax.swing.*;
@@ -13,7 +15,6 @@ public class UsersMain extends JFrame {
         sintomas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         sintomas.setResizable(false);
         this.setVisible(false);
-
     }
 
     private void button1ActionPerformed(ActionEvent e) {
@@ -25,12 +26,14 @@ public class UsersMain extends JFrame {
     }
 
     private void initComponents() {
+        User usuario = new User(LoginForm.tel,LoginForm.cuil);
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Ignacio Ferrari
+        // Generated using JFormDesigner Evaluation license - unknown
         label5 = new JLabel();
         button1 = new JButton();
         button2 = new JButton();
         button3 = new JButton();
+        label1 = new JLabel();
         menu = new JPanel();
 
         //======== this ========
@@ -59,7 +62,11 @@ public class UsersMain extends JFrame {
 
         //---- button3 ----
         button3.setText("Mapa");
-        button3.setFont(new Font("Doctor Glitch", Font.PLAIN, 12));
+
+        //---- label1 ----
+        label1.setText("Bienvenido " + usuario.getTel());
+        label1.setFont(label1.getFont().deriveFont(label1.getFont().getSize() + 2f));
+        label1.setHorizontalAlignment(SwingConstants.CENTER);
 
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
@@ -73,14 +80,21 @@ public class UsersMain extends JFrame {
                         .addComponent(button1, GroupLayout.PREFERRED_SIZE, 277, GroupLayout.PREFERRED_SIZE))
                     .addContainerGap(147, Short.MAX_VALUE))
                 .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
-                    .addContainerGap(236, Short.MAX_VALUE)
-                    .addComponent(label5)
-                    .addGap(214, 214, 214))
+                    .addContainerGap(190, Short.MAX_VALUE)
+                    .addGroup(contentPaneLayout.createParallelGroup()
+                        .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
+                            .addComponent(label5)
+                            .addGap(214, 214, 214))
+                        .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
+                            .addComponent(label1, GroupLayout.PREFERRED_SIZE, 177, GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18))))
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
                 .addGroup(contentPaneLayout.createSequentialGroup()
-                    .addGap(94, 94, 94)
+                    .addGap(15, 15, 15)
+                    .addComponent(label1)
+                    .addGap(51, 51, 51)
                     .addComponent(label5)
                     .addGap(49, 49, 49)
                     .addComponent(button1)
@@ -88,20 +102,18 @@ public class UsersMain extends JFrame {
                     .addComponent(button2)
                     .addGap(18, 18, 18)
                     .addComponent(button3)
-                    .addContainerGap(145, Short.MAX_VALUE))
+                    .addContainerGap(146, Short.MAX_VALUE))
         );
         pack();
         setLocationRelativeTo(getOwner());
 
         //======== menu ========
         {
-            menu.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new
-            javax.swing.border.EmptyBorder(0,0,0,0), "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e",javax
-            .swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java
-            .awt.Font("Dialo\u0067",java.awt.Font.BOLD,12),java.awt
-            .Color.red),menu. getBorder()));menu. addPropertyChangeListener(new java.beans.
-            PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("borde\u0072".
-            equals(e.getPropertyName()))throw new RuntimeException();}});
+            menu.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(
+            0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder
+            .BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt.Color.
+            red),menu. getBorder()));menu. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.
+            beans.PropertyChangeEvent e){if("bord\u0065r".equals(e.getPropertyName()))throw new RuntimeException();}});
 
             GroupLayout menuLayout = new GroupLayout(menu);
             menu.setLayout(menuLayout);
@@ -118,11 +130,12 @@ public class UsersMain extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Ignacio Ferrari
+    // Generated using JFormDesigner Evaluation license - unknown
     private JLabel label5;
     private JButton button1;
     private JButton button2;
     private JButton button3;
+    private JLabel label1;
     private JPanel menu;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

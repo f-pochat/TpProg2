@@ -6,6 +6,7 @@ package com.GUI;
 
 import com.GUI.Admins.AdminLogin;
 import com.GUI.Users.RegisterUser;
+import com.GUI.Users.User;
 import com.GUI.Users.UsersMain;
 import com.ReadersWriter.UserWriterReader;
 
@@ -18,12 +19,13 @@ import javax.swing.GroupLayout;
  * FedePochat
  */
 public class LoginForm extends JFrame {
-    public static String getTel;
 
     public LoginForm() {
         initComponents();
     }
-    public String tel;
+    public static String tel;
+    public static String cuil;
+
 
     private void button1ActionPerformed(ActionEvent e) {
         // TODO add your code here
@@ -35,10 +37,12 @@ public class LoginForm extends JFrame {
             usersMain.setResizable(false);
             usersMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             this.setVisible(false);
+            //usuario = new User(telField.getText(),cuilField.getText());
             //Sino salta el mensaje
         }else{
             JOptionPane.showMessageDialog(null, "Tel y/o Cuil Incorrecto");
         }
+
 
     }
 
