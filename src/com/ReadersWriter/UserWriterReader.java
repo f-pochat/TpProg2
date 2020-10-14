@@ -25,72 +25,47 @@ public class UserWriterReader {
     }
     //Lee y se fija si el archivo users.txt ya contiene ese tel
     public static boolean containsTel(String tel){
-        try{
-            FileReader fileReader = new FileReader("users.txt");
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            Map users = new HashMap<String,String>();
-            String line;
-            while ((line = bufferedReader.readLine()) != null){
-                String[] data = line.split(",");
-                users.put(data[0],data[1]);
-            }
-            fileReader.close();
-            if(users.containsKey(tel)) {
-                return true;
-            }else{
-                return false;
-            }
-
-        }catch(Exception e){
-            System.out.println(e);
+        Map users = readTelandCuil();
+        if(users.containsKey(tel)){
+            return true;
+        }else{
             return false;
         }
     }
     //Lee y se fija si el archivo users.txt ya contiene ese cuil
     public static boolean containsCuil(String cuil){
-        try{
-            FileReader fileReader = new FileReader("users.txt");
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            Map users = new HashMap<String,String>();
-            String line;
-            while ((line = bufferedReader.readLine()) != null){
-                String[] data = line.split(",");
-                users.put(data[0],data[1]);
-            }
-            fileReader.close();
-            if(users.containsValue(cuil)) {
-                return true;
-            }else{
-                return false;
-            }
-
-        }catch(Exception e){
-            System.out.println(e);
+        Map users = readTelandCuil();
+        if(users.containsValue(cuil)){
+            return true;
+        }else{
             return false;
         }
     }
     //Lee el archivo users.txt y se fija si el tel existe y concide con el cuil
     public static boolean findTelandCuil(String tel, String cuil){
-        try{
-            FileReader fileReader = new FileReader("users.txt");
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            Map admins = new HashMap<String,String>();
-            String line;
-            while ((line = bufferedReader.readLine()) != null){
-                String[] data = line.split(",");
-                admins.put(data[0],data[1]);
-            }
-            fileReader.close();
-            if(admins.containsKey(tel) && admins.get(tel).equals(cuil)) {
-                return true;
-            }else{
-                return false;
-            }
-
-        }catch(Exception e){
-            System.out.println(e);
+        Map users = readTelandCuil();
+        if(users.containsKey(tel) && users.get(tel).equals(cuil)) {
+            return true;
+        }else{
             return false;
         }
+    }
 
+    public static Map readTelandCuil(){
+        try {
+            FileReader fileReader = new FileReader("users.txt");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            Map users = new HashMap<String, String>();
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] data = line.split(",");
+                users.put(data[0], data[1]);
+            }
+            fileReader.close();
+            return users;
+        }catch (Exception e){
+            System.out.println(e);
+            return null;
+        }
     }
 }
