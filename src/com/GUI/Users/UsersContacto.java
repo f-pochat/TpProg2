@@ -50,7 +50,7 @@ public class UsersContacto extends JFrame implements PropertyChangeListener {
 
 
     private void InformarBttActionPerformed(ActionEvent e) {
-        User usuario = new User(LoginForm.tel,LoginForm.cuil);
+        User usuario = new User(LoginForm.tel);
         try{
             Date inicio = (Date) InicioTxt.getValue();
             Date fin = (Date) FinTxt.getValue();
@@ -62,14 +62,14 @@ public class UsersContacto extends JFrame implements PropertyChangeListener {
             JOptionPane.showMessageDialog(null, "Ingrese dos fechas validas");
             return;
         }
-        if(UserWriterReader.containsContact(usuario.getTel(),TelTxt.getText())) {
+        if(usuario.containsContact(TelTxt.getText())) {
             JOptionPane.showMessageDialog(null, "Contacto ya registrado");
             return;
         }else {
             if (UserWriterReader.containsTel(TelTxt.getText())) {
                 JOptionPane.showMessageDialog(null, "Solicitud de encuentro enviada");
                 // Lo agrega al archivo
-                UserWriterReader.addContact(usuario.getTel(), TelTxt.getText());
+                usuario.addContact(TelTxt.getText());
                 return;
             } else {
                 JOptionPane.showMessageDialog(null, "Numero inexistente");

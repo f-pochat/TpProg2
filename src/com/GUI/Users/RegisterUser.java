@@ -41,11 +41,11 @@ public class RegisterUser extends JFrame {
                 JOptionPane.showMessageDialog(null, "CUIL ya registrado");
                 //Sino escribir y registrar ese usuario y entrar
             }else{
-                UserWriterReader.addUser(telField.getText(),cuilField.getText());
-                JFrame usersMain = new UsersMain();
-                usersMain.setVisible(true);
-                usersMain.setResizable(false);
-                usersMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                User newUser = new User(telField.getText(),cuilField.getText());
+                JFrame usersLogin = new LoginForm();
+                usersLogin.setVisible(true);
+                usersLogin.setResizable(false);
+                usersLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 this.setVisible(false);
             }
             //Sino salta el mensaje

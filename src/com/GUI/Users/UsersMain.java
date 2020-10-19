@@ -29,7 +29,7 @@ public class UsersMain extends JFrame {
     }
 
     private void initComponents() {
-        User usuario = new User(LoginForm.tel,LoginForm.cuil);
+        User usuario = new User(LoginForm.tel);
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - unknown
         label5 = new JLabel();

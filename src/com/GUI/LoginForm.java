@@ -30,14 +30,14 @@ public class LoginForm extends JFrame {
     private void button1ActionPerformed(ActionEvent e) {
         // TODO add your code here
         //Se fija si existe ese usuario en users.txt
-        if(UserWriterReader.findTelandCuil(telField.getText(),cuilField.getText())){
+        User usuario = new User(telField.getText());
+        if(usuario.matchesCuil(cuilField.getText())){
             tel = telField.getText();
             JFrame usersMain = new UsersMain();
             usersMain.setVisible(true);
             usersMain.setResizable(false);
             usersMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             this.setVisible(false);
-            //usuario = new User(telField.getText(),cuilField.getText());
             //Sino salta el mensaje
         }else{
             JOptionPane.showMessageDialog(null, "Tel y/o Cuil Incorrecto");
