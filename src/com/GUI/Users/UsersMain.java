@@ -29,6 +29,15 @@ public class UsersMain extends JFrame {
         this.setVisible(false);
     }
 
+    private void solicitudActionPerformed(ActionEvent e) {
+        // TODO add your code here
+        JFrame solicitudes = new UserSolicitudes();
+        solicitudes.setVisible(true);
+        solicitudes.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        solicitudes.setResizable(false);
+        this.setVisible(false);
+    }
+
     private void initComponents() {
         User usuario = new User(LoginForm.tel);
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -44,6 +53,7 @@ public class UsersMain extends JFrame {
         label3 = new JLabel();
         scrollPane2 = new JScrollPane();
         list2 = new JList<>();
+        button4 = new JButton();
         menu = new JPanel();
 
         //======== this ========
@@ -108,6 +118,10 @@ public class UsersMain extends JFrame {
             scrollPane2.setViewportView(list2);
         }
 
+        //---- button4 ----
+        button4.setText("Solicitudes de Contactos");
+        button4.addActionListener(e -> solicitudActionPerformed(e));
+
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
@@ -125,21 +139,22 @@ public class UsersMain extends JFrame {
                     .addGap(27, 27, 27)
                     .addGroup(contentPaneLayout.createParallelGroup()
                         .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addComponent(scrollPane2, GroupLayout.PREFERRED_SIZE, 134, GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(437, Short.MAX_VALUE))
-                        .addGroup(contentPaneLayout.createSequentialGroup()
                             .addGroup(contentPaneLayout.createParallelGroup()
                                 .addComponent(label3, GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
                                 .addComponent(label2, GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
                                 .addGroup(contentPaneLayout.createSequentialGroup()
                                     .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 133, GroupLayout.PREFERRED_SIZE)
                                     .addGap(0, 31, Short.MAX_VALUE)))
-                            .addGap(26, 26, 26)
-                            .addGroup(contentPaneLayout.createParallelGroup()
-                                .addComponent(button2, GroupLayout.PREFERRED_SIZE, 277, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(button1, GroupLayout.PREFERRED_SIZE, 277, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(button3, GroupLayout.PREFERRED_SIZE, 277, GroupLayout.PREFERRED_SIZE))
-                            .addGap(104, 104, 104))))
+                            .addGap(26, 26, 26))
+                        .addGroup(contentPaneLayout.createSequentialGroup()
+                            .addComponent(scrollPane2, GroupLayout.PREFERRED_SIZE, 134, GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)))
+                    .addGroup(contentPaneLayout.createParallelGroup()
+                        .addComponent(button3, GroupLayout.PREFERRED_SIZE, 277, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(button2, GroupLayout.PREFERRED_SIZE, 277, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(button4, GroupLayout.PREFERRED_SIZE, 277, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(button1, GroupLayout.PREFERRED_SIZE, 277, GroupLayout.PREFERRED_SIZE))
+                    .addGap(104, 104, 104))
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
@@ -155,15 +170,18 @@ public class UsersMain extends JFrame {
                         .addGroup(contentPaneLayout.createSequentialGroup()
                             .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(label3))
-                        .addGroup(contentPaneLayout.createSequentialGroup()
+                            .addComponent(label3)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED))
+                        .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
                             .addComponent(button1)
-                            .addGap(32, 32, 32)
+                            .addGap(18, 18, 18)
+                            .addComponent(button4)
+                            .addGap(18, 18, 18)
                             .addComponent(button2)
-                            .addGap(31, 31, 31)
-                            .addComponent(button3)))
-                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(scrollPane2, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
+                            .addGap(27, 27, 27)))
+                    .addGroup(contentPaneLayout.createParallelGroup()
+                        .addComponent(scrollPane2, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(button3))
                     .addContainerGap(34, Short.MAX_VALUE))
         );
         pack();
@@ -171,12 +189,11 @@ public class UsersMain extends JFrame {
 
         //======== menu ========
         {
-            menu.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border
-            .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing .border . TitledBorder. CENTER ,javax
-            . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,
-            12 ) ,java . awt. Color .red ) ,menu. getBorder () ) ); menu. addPropertyChangeListener( new java. beans
-            .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r" .equals ( e.
-            getPropertyName () ) )throw new RuntimeException( ) ;} } );
+            menu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
+            0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
+            . BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
+            red) ,menu. getBorder( )) ); menu. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
+            beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
             GroupLayout menuLayout = new GroupLayout(menu);
             menu.setLayout(menuLayout);
@@ -223,6 +240,7 @@ public class UsersMain extends JFrame {
     private JLabel label3;
     private JScrollPane scrollPane2;
     private JList<String> list2;
+    private JButton button4;
     private JPanel menu;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

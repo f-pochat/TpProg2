@@ -145,6 +145,10 @@ public class User {
             }
     }
 
+    /*Estas 3 funciones dividen a los contactos en verificados o pendientes (no aceptada la solicitud)
+      Contains me se fija si un usuario, me tiene entre sus contactos, si me tiene, es verificado, si no me tiene todavia no acepto la solicitud.
+      Si el me tiene pero yo no, se agrega a getSolicitudes de Contacto
+     */
     public boolean containsMe(String tel){
         User otroUsuario = new User(tel);
         return otroUsuario.getContactosEstrechos().contains(getTel());
@@ -168,6 +172,40 @@ public class User {
             }
         }
         return contactosPendiente;
+    }
+
+    public ArrayList<String> getSolicitudesdeContacto(){
+        ArrayList<String> solicitudes = new ArrayList<>();
+        for (String str : telsList()){
+            if (containsMe(str) && !getContactosEstrechos().contains(str)){
+                solicitudes.add(str);
+            }
+        }
+        return solicitudes;
+    }
+
+    public void rejectContact(String otherUserTel){
+        User otherUser = new User(otherUserTel);
+        otherUser.getContent().remove(getTel());
+        int newNumofContacts = Integer.parseInt(content.get(2))-1;
+        otherUser.getContent().set(2, String.valueOf(newNumofContacts));
+        try{
+            ArrayList<ArrayList<String>> users = otherUser.readFile();
+            users.set(telsList().indexOf(otherUser.getTel()),content);
+            FileWriter fileWriter = new FileWriter("users.txt");
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            for (int i = 0; i < users.size(); i++) {
+                for (String str: users.get(i)){
+                    bufferedWriter.append(str + ",");
+                }
+                bufferedWriter.append("\n");
+            }
+            bufferedWriter.flush();
+            bufferedWriter.close();
+            fileWriter.close();
+        }catch (Exception e){
+            System.out.println(e + "C");
+        }
     }
 
 

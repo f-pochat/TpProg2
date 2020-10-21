@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq t {space ::248:x, par l {seq t {comp label1:::p:132:p, space :p:34:p}, seq t {comp label5:::p::p, space :p:216:p}}}, seq l {space :p:27:p, par l {seq {comp scrollPane2:::p:134:p, space ::437:x}, seq {par l {comp label3::l::164:x, comp label2::l::164:x, seq {comp scrollPane1:::p:133:p, space :0:31:x}}, space :p:26:p, par l {comp button2:::p:277:p, comp button1:::p:277:p, comp button3::l:p:277:p}, space :p:104:p}}}}"
-			"$verticalGroup": "par l {seq l {space :p:19:p, comp label1:::p::p, space :p:23:p, comp label5:::p::p, space :::p, comp label2:::p::p, space :::p, par l {seq {comp scrollPane1:::p:127:p, space s:::p, comp label3:::p::p}, seq {comp button1:::p::p, space :p:32:p, comp button2:::p::p, space :p:31:p, comp button3:::p::p}}, space :::p, comp scrollPane2:::p:115:p, space ::34:x}}"
+			"$horizontalGroup": "par l {seq t {space ::248:x, par l {seq t {comp label1:::p:132:p, space :p:34:p}, seq t {comp label5:::p::p, space :p:216:p}}}, seq l {space :p:27:p, par l {seq {par l {comp label3::l::164:x, comp label2::l::164:x, seq {comp scrollPane1:::p:133:p, space :0:31:x}}, space :p:26:p}, seq l {comp scrollPane2:::p:134:p, space ::56:x}}, par l {comp button3:::p:277:p, comp button2::l:p:277:p, comp button4::l:p:277:p, comp button1::l:p:277:p}, space :p:104:p}}"
+			"$verticalGroup": "par l {seq l {space :p:19:p, comp label1:::p::p, space :p:23:p, comp label5:::p::p, space :::p, comp label2:::p::p, space :::p, par l {seq l {comp scrollPane1:::p:127:p, space s:::p, comp label3:::p::p, space :::p}, seq t {comp button1:::p::p, space s:::p, comp button4:::p::p, space s:::p, comp button2:::p::p, space :p:27:p}}, par l {comp scrollPane2:::p:115:p, comp button3:::p::p}, space ::34:x}}"
 		} ) {
 			name: "this"
 			"iconImage": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -57,6 +57,11 @@ new FormModel {
 					name: "list2"
 					"model": #DefaultListModel0
 				} )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button4"
+				"text": "Solicitudes de Contactos"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "solicitudActionPerformed", true ) )
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
