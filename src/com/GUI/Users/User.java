@@ -2,6 +2,7 @@ package com.GUI.Users;
 
 import com.ReadersWriter.UserWriterReader;
 
+import java.awt.image.AreaAveragingScaleFilter;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -142,6 +143,31 @@ public class User {
             }catch (Exception e){
                 System.out.println(e + "C");
             }
+    }
+
+    public boolean containsMe(String tel){
+        User otroUsuario = new User(tel);
+        return otroUsuario.getContactosEstrechos().contains(getTel());
+    }
+
+    public ArrayList<String> getVerificadoContactos(){
+        ArrayList<String> contactosVerificados = new ArrayList<>();
+        for (String str: getContactosEstrechos()){
+            if (containsMe(str)){
+                contactosVerificados.add(str);
+            }
+        }
+        return contactosVerificados;
+    }
+
+    public ArrayList<String> getPendienteContactos(){
+        ArrayList<String> contactosPendiente = new ArrayList<>();
+        for (String str: getContactosEstrechos()){
+            if (!containsMe(str)){
+                contactosPendiente.add(str);
+            }
+        }
+        return contactosPendiente;
     }
 
 
