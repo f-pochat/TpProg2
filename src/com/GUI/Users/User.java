@@ -187,11 +187,11 @@ public class User {
     public void rejectContact(String otherUserTel){
         User otherUser = new User(otherUserTel);
         otherUser.getContent().remove(getTel());
-        int newNumofContacts = Integer.parseInt(content.get(2))-1;
+        int newNumofContacts = Integer.parseInt(otherUser.getContent().get(2)) - 1;
         otherUser.getContent().set(2, String.valueOf(newNumofContacts));
         try{
             ArrayList<ArrayList<String>> users = otherUser.readFile();
-            users.set(telsList().indexOf(otherUser.getTel()),content);
+            users.set(telsList().indexOf(otherUser.getTel()),otherUser.getContent());
             FileWriter fileWriter = new FileWriter("users.txt");
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             for (int i = 0; i < users.size(); i++) {
