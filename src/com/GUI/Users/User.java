@@ -209,11 +209,4 @@ public class User {
     }
 
 
-
-    public static void main(String[] args) {
-      User usuario = new User("1234");
-      System.out.println(usuario.matchesCuil("5678"));
-      System.out.println(usuario.matchesCuil("56789"));
-      System.out.println(usuario.getContactosEstrechos());
-    }
 }
