@@ -4,25 +4,14 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+
 /**
  * FedePochat & SebaAdaro
  */
 public class UserWriterReader {
-    //Escribe en el archivo users.txt y agrega el tel y el cuil
-    public static void addUser(String tel, String cuil) {
-        try{
-            FileWriter fileWriter = new FileWriter("users.txt",true);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            bufferedWriter.write(tel + "," + cuil+"\n");
-            bufferedWriter.close();
-            fileWriter.close();
-        }catch (Exception e){
-            System.out.println(e);
-        }
+    //PREGUNTAR EN CLASE DE CONSULTA SI SE PUEDE USAR STATIC AHI
 
-    }
     //Lee y se fija si el archivo users.txt ya contiene ese tel
     public static boolean containsTel(String tel){
         Map users = readTelandCuil();
@@ -36,15 +25,6 @@ public class UserWriterReader {
     public static boolean containsCuil(String cuil){
         Map users = readTelandCuil();
         if(users.containsValue(cuil)){
-            return true;
-        }else{
-            return false;
-        }
-    }
-    //Lee el archivo users.txt y se fija si el tel existe y concide con el cuil
-    public static boolean findTelandCuil(String tel, String cuil){
-        Map users = readTelandCuil();
-        if(users.containsKey(tel) && users.get(tel).equals(cuil)) {
             return true;
         }else{
             return false;
@@ -68,4 +48,5 @@ public class UserWriterReader {
             return null;
         }
     }
+
 }

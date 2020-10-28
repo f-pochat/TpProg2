@@ -7,6 +7,7 @@ import java.beans.PropertyChangeListener;
 import java.util.Date;
 import javax.swing.*;
 
+import com.GUI.LoginForm;
 import com.ReadersWriter.UserWriterReader;
 
 
@@ -49,6 +50,7 @@ public class UsersContacto extends JFrame implements PropertyChangeListener {
 
 
     private void InformarBttActionPerformed(ActionEvent e) {
+        User usuario = new User(LoginForm.tel);
         try{
             Date inicio = (Date) InicioTxt.getValue();
             Date fin = (Date) FinTxt.getValue();
@@ -60,14 +62,19 @@ public class UsersContacto extends JFrame implements PropertyChangeListener {
             JOptionPane.showMessageDialog(null, "Ingrese dos fechas validas");
             return;
         }
-
-        if (UserWriterReader.containsTel(TelTxt.getText())){
-            JOptionPane.showMessageDialog(null, "Solicitud de encuentro enviada");
-            // Debemos mandar la soliciud
+        if(usuario.containsContact(TelTxt.getText())) {
+            JOptionPane.showMessageDialog(null, "Contacto ya registrado");
             return;
-        } else{
-            JOptionPane.showMessageDialog(null, "Numero inexistente");
-            return;
+        }else {
+            if (UserWriterReader.containsTel(TelTxt.getText())) {
+                JOptionPane.showMessageDialog(null, "Solicitud de encuentro enviada");
+                // Lo agrega al archivo
+                usuario.addContact(TelTxt.getText());
+                return;
+            } else {
+                JOptionPane.showMessageDialog(null, "Numero inexistente");
+                return;
+            }
         }
     }
 

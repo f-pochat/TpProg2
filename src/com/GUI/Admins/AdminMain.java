@@ -16,6 +16,7 @@ public class AdminMain extends JFrame {
     }
 
     private void initComponents() {
+        Admin administrador = new Admin(AdminLogin.tel);
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Ignacio Ferrari
         label1 = new JLabel();
@@ -45,6 +46,7 @@ public class AdminMain extends JFrame {
         pack();
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
+        label1.setText("Hola, " + administrador.getUsername());
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables

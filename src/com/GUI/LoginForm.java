@@ -30,14 +30,14 @@ public class LoginForm extends JFrame {
     private void button1ActionPerformed(ActionEvent e) {
         // TODO add your code here
         //Se fija si existe ese usuario en users.txt
-        if(UserWriterReader.findTelandCuil(telField.getText(),cuilField.getText())){
+        User usuario = new User(telField.getText());
+        if(usuario.matchesCuil(cuilField.getText())){
             tel = telField.getText();
             JFrame usersMain = new UsersMain();
             usersMain.setVisible(true);
             usersMain.setResizable(false);
             usersMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             this.setVisible(false);
-            //usuario = new User(telField.getText(),cuilField.getText());
             //Sino salta el mensaje
         }else{
             JOptionPane.showMessageDialog(null, "Tel y/o Cuil Incorrecto");
@@ -65,6 +65,7 @@ public class LoginForm extends JFrame {
         this.setVisible(false);
 
     }
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -128,7 +129,7 @@ public class LoginForm extends JFrame {
                         .addComponent(cuilField, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
                     .addContainerGap(167, Short.MAX_VALUE))
                 .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
-                    .addContainerGap(238, Short.MAX_VALUE)
+                    .addContainerGap(203, Short.MAX_VALUE)
                     .addGroup(contentPaneLayout.createParallelGroup()
                         .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
                             .addComponent(label5)
@@ -149,7 +150,7 @@ public class LoginForm extends JFrame {
                     .addComponent(button2)
                     .addGap(30, 30, 30)
                     .addComponent(label5)
-                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                     .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(label3)
                         .addComponent(telField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))

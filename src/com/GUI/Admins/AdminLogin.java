@@ -5,7 +5,6 @@
 package com.GUI.Admins;
 
 import com.GUI.LoginForm;
-import com.ReadersWriter.AdminReader;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -16,6 +15,8 @@ import javax.swing.GroupLayout;
  * FedePochat
  */
 public class AdminLogin extends JFrame {
+    public static String tel;
+
     public AdminLogin() {
         initComponents();
     }
@@ -23,7 +24,9 @@ public class AdminLogin extends JFrame {
     //Se fija si existe ese usuario en admin.txt
     private void button1ActionPerformed(ActionEvent e) {
         String passwordString = new String(passwordField.getPassword());
-        if(AdminReader.findUserandPassword(userField.getText(),passwordString)){
+        Admin administrador = new Admin(userField.getText());
+        if(administrador.matchesPassword(passwordString)){
+            tel = userField.getText();
             JFrame adminMain = new AdminMain();
             adminMain.setVisible(true);
             adminMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
