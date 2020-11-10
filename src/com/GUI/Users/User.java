@@ -1,22 +1,19 @@
 package com.GUI.Users;
 
-import com.ReadersWriter.UserWriterReader;
+import com.GUI.Sintomas.Sintomas;
 
-import java.awt.image.AreaAveragingScaleFilter;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import javax.swing.*;
+import java.io.*;
+import java.util.*;
 
 public class User {
+
     private String tel;
     private String cuil;
     private ArrayList<String> content;
     //private ArrayList<String> sintomas = new ArrayList<>();
     private ArrayList<String> contactosEstrechos = new ArrayList<>();
+    private ArrayList<String> sintomasPresentados = new ArrayList();
 
     public User(String tel) {
         if (telsList().contains(tel)){
@@ -208,5 +205,72 @@ public class User {
         }
     }
 
+    public boolean addSintoma(String sintoma) {
 
+        Sintomas listaDeSintomas = new Sintomas();
+        listaDeSintomas.readSintomas();
+        int casoN = listaDeSintomas.addCaso(sintoma);
+        if (casoN == -1) {
+            System.out.println("Sintoma no encontrado");
+            return false;
+        } else
+            System.out.println("Sintoma agregado");
+            sintomasPresentados.add(sintoma);
+            if (sintomasPresentados.size()==2){
+                avisarContactos(getVerificadoContactos(),sintomasPresentados);
+            }
+            return true;
+    }
+
+    private void avisarContactos(ArrayList verificadoContactos, List listaDeSintomas) {
+        String allSimpthoms = "";
+        for (int i = 0; i <listaDeSintomas.size() ; i++) {
+            allSimpthoms = allSimpthoms + ","+listaDeSintomas.get(i);
+        }
+        System.out.println(allSimpthoms);
+        try {
+            for (int i = 0; i <verificadoContactos.size() ; i++) {
+                FileWriter fileWriter = new FileWriter(verificadoContactos.get(i)+".txt");
+                BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+                bufferedWriter.write(tel+allSimpthoms+"\n");
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                fileWriter.close();
+
+
+            }
+
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+    }
+
+    public void TieneContactosConSintomas() {
+        String line;
+
+        try {
+            FileReader fileReader = new FileReader(tel + ".txt");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] data = line.split(",");
+                String allSintoms = "";
+                for (int i = 1; i < data.length; i++) {
+                    allSintoms = allSintoms + "," + data[i];
+                }
+                JOptionPane.showMessageDialog(null, "El telefono: " + data[0] + " con quien tuviste contacto, presento los siguientes sintomas: " + allSintoms, "A CUIDARSE!", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+            bufferedReader.close();
+
+            PrintWriter writer = new PrintWriter(tel + ".txt");
+            writer.print("");
+            writer.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 }

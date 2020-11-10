@@ -108,6 +108,7 @@ public class UsersContacto extends JFrame implements PropertyChangeListener {
         BackBtt.setText("Back");
         BackBtt.setFont(new Font("Doctor Glitch", Font.PLAIN, 12));
         BackBtt.addActionListener(e -> {
+			button2ActionPerformed(e);
 			backActionPerformed(e);
 		});
 
@@ -124,7 +125,7 @@ public class UsersContacto extends JFrame implements PropertyChangeListener {
 
         //---- button2 ----
         button2.setText("Selec");
-        button2.addActionListener(e -> button2ActionPerformed(e));
+        button2.addActionListener(e -> button1ActionPerformed(e));
 
         //---- FinLbl ----
         FinLbl.setText("Fin");
@@ -133,6 +134,8 @@ public class UsersContacto extends JFrame implements PropertyChangeListener {
         //---- InformarBtt ----
         InformarBtt.setText("Informar");
         InformarBtt.addActionListener(e -> {
+			button1ActionPerformed(e);
+			InformarBttActionPerformed(e);
 			InformarBttActionPerformed(e);
 		});
 

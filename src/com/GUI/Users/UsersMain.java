@@ -11,6 +11,7 @@ public class UsersMain extends JFrame {
     DefaultListModel<String> listModel2 = new DefaultListModel<>();
     public UsersMain() {
         initComponents();
+
     }
 
     private void button2ActionPerformed(ActionEvent e) {

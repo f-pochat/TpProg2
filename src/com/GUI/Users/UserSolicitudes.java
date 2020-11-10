@@ -62,7 +62,7 @@ public class UserSolicitudes extends JFrame {
         usuario = new User(LoginForm.tel);
 
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - unknown
+        // Generated using JFormDesigner Evaluation license - Ignacio Ferrari
         label1 = new JLabel();
         scrollPane1 = new JScrollPane();
         list1 = new JList();
@@ -145,7 +145,7 @@ public class UserSolicitudes extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - unknown
+    // Generated using JFormDesigner Evaluation license - Ignacio Ferrari
     private JLabel label1;
     private JScrollPane scrollPane1;
     private JList list1;
