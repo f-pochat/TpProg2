@@ -1,0 +1,74 @@
+JFDML JFormDesigner: "7.0.2.6.321" Java: "11.0.7" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {space ::44:x, par l {seq t {comp BackBtt:::p::p, space :p:34:p}, seq t {par t:::p {seq {comp InicioTxt:::p:131:p, space u:::p}, seq l {space :p:60:p, comp label6:::p::p, space :::x}}, par l {seq {comp InicioBtt:::p:62:p, space ::78:x, comp FinTxt:::p:147:p, space :::p, comp button2:::p:62:p, space :p:56:p}, seq t {comp FinLbl:::p::p, space :p:154:p}}}, seq t {comp label2:::p:289:p, space :p:144:p}, seq t {comp ContactoLbl:::p::p, space :p:180:p}, seq t {comp TelLbl:::p:80:p, space s:::p, comp TelTxt:::p:222:p, space :p:170:p}}}, seq l {space :p:220:p, comp InformarBtt:::p:138:p, space :0:240:x}}"
+			"$verticalGroup": "par l {seq l {space :p:28:p, comp BackBtt:::p::p, space :p:22:p, comp ContactoLbl:::p::p, space u:::p, comp label2:::p:83:p, space s:::p, par b {comp TelTxt::b:p::p, comp TelLbl::b:p::p}, space ::38:x, par b {comp FinLbl::b:p::p, comp label6::b:p::p}, space u::16:x, par b {comp InicioTxt::b:p::p, comp InicioBtt::b:p::p, comp button2::b:p::p, comp FinTxt::b:p::p}, space s:::p, comp InformarBtt:::p:43:p, space :p:20:p}}"
+		} ) {
+			name: "this"
+			"iconImage": sfield com.jformdesigner.model.FormObject NULL_VALUE
+			"resizable": false
+			"title": "TraceIT"
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "ContactoLbl"
+				"text": "Contacto estrecho"
+				"font": new java.awt.Font( "Doctor Glitch", 0, 26 )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "BackBtt"
+				"text": "Back"
+				"font": new java.awt.Font( "Doctor Glitch", 0, 12 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button2ActionPerformed", true ) )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "backActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "TelTxt"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "TelLbl"
+				"text": "Telefono"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "InicioBtt"
+				"text": "Selec"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JFormattedTextField" ) {
+				name: "InicioTxt"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label6"
+				"text": "Inicio"
+				"font": &Font0 new java.awt.Font( "Doctor Glitch", 0, 21 )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button2"
+				"text": "Selec"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "FinLbl"
+				"text": "Fin"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JFormattedTextField" ) {
+				name: "FinTxt"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "InformarBtt"
+				"text": "Informar"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "InformarBttActionPerformed", true ) )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "InformarBttActionPerformed", true ) )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 600, 470 )
+		} )
+	}
+}

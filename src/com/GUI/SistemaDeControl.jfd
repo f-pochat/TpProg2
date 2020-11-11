@@ -1,0 +1,44 @@
+JFDML JFormDesigner: "7.0.2.6.321" Java: "11.0.7" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq t {space ::290:x, comp label5:::p::p, space :p:214:p}, seq {par l {seq {space :p:166:p, comp button1:::p::p, space s:::p, comp button2:::p::p}, seq l {space :p:32:p, comp scrollPane1:::p:221:p}, seq l {space :p:108:p, comp label3:::p::p}}, space ::133:x}}"
+			"$verticalGroup": "par l {seq l {space :p:106:p, comp label5:::p::p, space :p:33:p, comp label3:::p::p, space :::p, comp scrollPane1:::p:144:p, space u:::p, par b {comp button2::b:p::p, comp button1::b:p::p}, space ::68:x}}"
+		} ) {
+			name: "this"
+			"iconImage": sfield com.jformdesigner.model.FormObject NULL_VALUE
+			"resizable": false
+			"title": "TraceIT"
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label5"
+				"text": "Control"
+				"font": new java.awt.Font( "Doctor Glitch", 0, 26 )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button1"
+				"text": "Agregar sintoma"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button2"
+				"text": "Remover sintoma"
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "javax.swing.JList" ) {
+					name: "list1"
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+				"text": "Telefono"
+				"font": new java.awt.Font( "Doctor Glitch", 0, 12 )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"size": new java.awt.Dimension( 600, 470 )
+			"location": new java.awt.Point( 0, 0 )
+		} )
+	}
+}

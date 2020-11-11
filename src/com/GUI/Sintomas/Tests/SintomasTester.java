@@ -1,5 +1,6 @@
-package com.GUI.Sintomas;
+package com.GUI.Sintomas.Tests;
 
+import com.GUI.Sintomas.Sintomas;
 import org.junit.*;
 
 import static org.junit.Assert.*;
