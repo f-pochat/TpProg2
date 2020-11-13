@@ -1,0 +1,8 @@
+fiebre,4
+toz,2
+aca,0
+hola,0
+estees0,0
+7,0
+dolordegarganta,0
+0,0

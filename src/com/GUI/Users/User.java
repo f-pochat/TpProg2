@@ -42,8 +42,6 @@ public class User {
 
         try{
 
-            File file2 = new File ("SintomasDeUsers" + File.separator + tel+".txt");
-            file2.createNewFile();
             readSintomasPresentados();
             contactosConSintoma();
 

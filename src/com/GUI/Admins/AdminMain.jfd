@@ -4,13 +4,27 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq l {space :p:276:p, comp label1:::p::p, space ::278:x}}"
-			"$verticalGroup": "par l {seq l {space :p:138:p, comp label1:::p::p, space ::292:x}}"
+			"$horizontalGroup": "par l {seq {space ::173:x, par l {seq t {comp label5:::p::p, space :p:173:p}, seq t {par t {comp button2:::p:292:p, comp button1:::p:292:p}, space :p:133:p}}}}"
+			"$verticalGroup": "par l {seq l {space :p:101:p, comp label5:::p::p, space :p:38:p, comp button1:::p::p, space :p:26:p, comp button2:::p::p, space ::189:x}}"
 		} ) {
 			name: "this"
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label1"
-				"text": "ADMIN"
+				name: "label5"
+				"text": "Administradores"
+				"font": new java.awt.Font( "Doctor Glitch", 0, 26 )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button1"
+				"text": "Ingresar nuevo sintoma"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button2"
+				"text": "Ver cantidad de casos"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button2ActionPerformed", true ) )
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )

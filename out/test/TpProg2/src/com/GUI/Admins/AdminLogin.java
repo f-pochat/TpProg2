@@ -77,7 +77,7 @@ public class AdminLogin extends JFrame {
         label4.setFont(new Font("Doctor Glitch", Font.PLAIN, 12));
 
         //---- label5 ----
-        label5.setText("TraceIT");
+        label5.setText("Administradores");
         label5.setFont(new Font("Doctor Glitch", Font.PLAIN, 26));
 
         //---- button1 ----
@@ -107,32 +107,30 @@ public class AdminLogin extends JFrame {
                         .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
                             .addComponent(label4)
                             .addGap(25, 25, 25)))
-                    .addGap(31, 31, 31)
                     .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                        .addComponent(userField, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                        .addComponent(passwordField, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
-                    .addContainerGap(145, Short.MAX_VALUE))
+                        .addComponent(userField, GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
+                        .addComponent(passwordField))
+                    .addContainerGap(98, Short.MAX_VALUE))
                 .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
                     .addContainerGap(283, Short.MAX_VALUE)
                     .addGroup(contentPaneLayout.createParallelGroup()
-                        .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
-                            .addComponent(label5, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGap(220, 220, 220))
-                        .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
-                            .addComponent(button2)
-                            .addGap(34, 34, 34))
-                        .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
-                            .addComponent(button1)
-                            .addGap(237, 237, 237))))
+                        .addComponent(label5)
+                        .addGroup(contentPaneLayout.createParallelGroup()
+                            .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
+                                .addComponent(button2)
+                                .addGap(34, 34, 34))
+                            .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
+                                .addComponent(button1)
+                                .addGap(237, 237, 237)))))
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
                 .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
                     .addGap(35, 35, 35)
                     .addComponent(button2)
-                    .addGap(30, 30, 30)
+                    .addGap(43, 43, 43)
                     .addComponent(label5)
-                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                     .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(label3)
                         .addComponent(userField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))

@@ -1,7 +1,5 @@
 package com.GUI;
 
-import java.awt.*;
-import java.awt.event.*;
 import com.GUI.Sintomas.Sintomas;
 import com.GUI.Users.User;
 
@@ -17,15 +15,21 @@ public class SistemaDeControl extends JFrame {
     private ArrayList<String> contactosVerificados = new ArrayList<>();
     private ArrayList<String> posibleBroteHabilitado = new ArrayList<>(); // Sirve por si hay 3 contaggios, pero todavia no hay 5 casos. Cuando haya 5 casos, dispara brote
     private String tel;
-    Sintomas listaDeSintomas = new Sintomas();
+    private Sintomas listaDeSintomas = new Sintomas();
+    private HashMap<String,Integer> SintomasYCasos = new HashMap();
 
 
-    public SistemaDeControl(String tel) {
+    public SistemaDeControl(String tel) { // Lo usan los users
         User thisUser = new User(tel);
         sintomasCoincidentesConContactos = thisUser.getSintomasCoincidentesConContactos();
         contactosVerificados = thisUser.getContactosEstrechos();
         this.tel = tel;
         VerificarSiHayBrote(thisUser);
+
+    }
+
+    public HashMap<String,Integer> getSintomasYCasos() {
+        return SintomasYCasos;
     }
 
     private void VerificarSiHayBrote(User thisUser) {
@@ -41,7 +45,7 @@ public class SistemaDeControl extends JFrame {
     private void PosibleBrote(String str) {
         int casosDelBrote = readBrotes(str);
         if (casosDelBrote != 0 ){
-            ordenarOSumarCasos(str,true);
+            SumarCasos(str,true);
             return;
         }
         Sintomas listaDeSintomas = new Sintomas();
@@ -98,7 +102,7 @@ public class SistemaDeControl extends JFrame {
     }
 
 
-    private void ordenarOSumarCasos(String str, boolean necesitaSobreescribir) { // Como el metodo ordenar y el sumar un caso son parecidos, los meti los dos aca, diferenciandolos por un boolean
+    private void SumarCasos(String str, boolean necesitaSobreescribir) { // Como el metodo ordenar y el sumar un caso son parecidos, los meti los dos aca, diferenciandolos por un boolean
 
         HashMap<String,Integer> sobreescribirBrotes = new HashMap<>();
 
@@ -170,107 +174,5 @@ public class SistemaDeControl extends JFrame {
         }
         return temp;
     }
-
-
-    private void button1ActionPerformed(ActionEvent e) {
-        // TODO add your code here
-    }
-
-    private void button2ActionPerformed(ActionEvent e) {
-        // TODO add your code here
-    }
-
-    private void backActionPerformed(ActionEvent e) {
-        // TODO add your code here
-    }
-
-    private void initComponents() {
-        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Ignacio Ferrari
-        label5 = new JLabel();
-        button1 = new JButton();
-        button2 = new JButton();
-        scrollPane1 = new JScrollPane();
-        list1 = new JList();
-        label3 = new JLabel();
-
-        //======== this ========
-        setIconImage(null);
-        setResizable(false);
-        setTitle("TraceIT");
-        var contentPane = getContentPane();
-
-        //---- label5 ----
-        label5.setText("Control");
-        label5.setFont(new Font("Doctor Glitch", Font.PLAIN, 26));
-
-        //---- button1 ----
-        button1.setText("Agregar sintoma");
-        button1.addActionListener(e -> button1ActionPerformed(e));
-
-        //---- button2 ----
-        button2.setText("Remover sintoma");
-
-        //======== scrollPane1 ========
-        {
-            scrollPane1.setViewportView(list1);
-        }
-
-        //---- label3 ----
-        label3.setText("Telefono");
-        label3.setFont(new Font("Doctor Glitch", Font.PLAIN, 12));
-
-        GroupLayout contentPaneLayout = new GroupLayout(contentPane);
-        contentPane.setLayout(contentPaneLayout);
-        contentPaneLayout.setHorizontalGroup(
-            contentPaneLayout.createParallelGroup()
-                .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
-                    .addContainerGap(290, Short.MAX_VALUE)
-                    .addComponent(label5)
-                    .addGap(214, 214, 214))
-                .addGroup(contentPaneLayout.createSequentialGroup()
-                    .addGroup(contentPaneLayout.createParallelGroup()
-                        .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addGap(166, 166, 166)
-                            .addComponent(button1)
-                            .addGap(18, 18, 18)
-                            .addComponent(button2))
-                        .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addGap(32, 32, 32)
-                            .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 221, GroupLayout.PREFERRED_SIZE))
-                        .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addGap(108, 108, 108)
-                            .addComponent(label3)))
-                    .addContainerGap(133, Short.MAX_VALUE))
-        );
-        contentPaneLayout.setVerticalGroup(
-            contentPaneLayout.createParallelGroup()
-                .addGroup(contentPaneLayout.createSequentialGroup()
-                    .addGap(106, 106, 106)
-                    .addComponent(label5)
-                    .addGap(33, 33, 33)
-                    .addComponent(label3)
-                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 144, GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(button2)
-                        .addComponent(button1))
-                    .addContainerGap(68, Short.MAX_VALUE))
-        );
-        pack();
-        setLocationRelativeTo(getOwner());
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents
-    }
-
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Ignacio Ferrari
-    private JLabel label5;
-    private JButton button1;
-    private JButton button2;
-    private JScrollPane scrollPane1;
-    private JList list1;
-    private JLabel label3;
-    // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
 

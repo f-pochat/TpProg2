@@ -55,8 +55,6 @@ public class UserTester {
         User usuario3 = new User("3");
         otroUsuario2.addContact("2");
 
-
-
         usuario1157670618.addSintoma("fiebre");
         usuario5678.addSintoma("fiebre");
         otroUsuario2.addSintoma("fiebre");
