@@ -9,13 +9,14 @@ import java.util.*;
 
 public class User {
 
-    private boolean fueContagiado = false;
     private String tel;
     private String cuil;
     private ArrayList<String> content;
     //private ArrayList<String> sintomas = new ArrayList<>();
     private ArrayList<String> contactosEstrechos = new ArrayList<>();
-    private HashMap<String,String> contactosConSintomas = new HashMap<>();
+
+
+    private ArrayList<String> sintomasCoincidentesConContactos = new ArrayList<>();
 
     private final ArrayList<String> sintomasPresentados = new ArrayList();
 
@@ -26,8 +27,6 @@ public class User {
 
 
     public User(String tel) {
-
-
 
         if (telsList().contains(tel)){
             this.tel = tel;
@@ -43,12 +42,10 @@ public class User {
 
         try{
 
-            File file = new File ("Contactos" + File.separator + tel+".txt");
-            file.createNewFile();
-
-            File file2 = new File ("Sintomas" + File.separator + tel+".txt");
+            File file2 = new File ("SintomasDeUsers" + File.separator + tel+".txt");
             file2.createNewFile();
             readSintomasPresentados();
+            contactosConSintoma();
 
         } catch (Exception e){
             System.out.println(e.getMessage());
@@ -247,8 +244,7 @@ public class User {
             System.out.println("Sintoma agregado");
             sintomasPresentados.add(sintoma);
             listaDeSintomas.writeSintomasOfAnUser(tel,sintomasPresentados);
-            SistemaDeControl newSistemaDeControl = new SistemaDeControl(getVerificadoContactos(),sintomasPresentados,tel);
-            avisarContactos(getVerificadoContactos(),sintomasPresentados);
+            SistemaDeControl newSistemaDeControl = new SistemaDeControl(tel);
 
             return true;
     }
@@ -261,71 +257,50 @@ public class User {
         }
         Sintomas listaDeSintomas = new Sintomas();
         listaDeSintomas.writeSintomasOfAnUser(tel,sintomasPresentados);
+        listaDeSintomas.restarUnCaso(selected);
     }
 
-
-    private void avisarContactos(ArrayList verificadoContactos, List listaDeSintomas) {
-        String allSimpthoms = "";
-        for (int i = 0; i <listaDeSintomas.size() ; i++) {
-            allSimpthoms = allSimpthoms + ","+listaDeSintomas.get(i);
-        }
-        System.out.println(allSimpthoms);
-        try {
-            for (int i = 0; i <verificadoContactos.size() ; i++) {
-
-                FileWriter fileWriter = new FileWriter("Contactos" +File.separator+ verificadoContactos.get(i) + ".txt");
-                BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-                bufferedWriter.write(tel+allSimpthoms+"\n");
-                bufferedWriter.flush();
-                bufferedWriter.close();
-                fileWriter.close();
-            }
-
-        } catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-
-    }
-
-    public void TieneContactosConSintomas() {
+    public void contactosConSintoma() {
 
         String line;
+        int counter;
+        String sintomasDelContacto;
 
         try {
-            FileReader fileReader = new FileReader("Contactos" + File.separator + tel+".txt");
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-            while ((line = bufferedReader.readLine()) != null) {
-                String[] data = line.split(",");
-                System.out.println(data.length);
-                String allSintoms = "";
-                for (int i = 1; i < data.length; i++) {
-                    allSintoms = allSintoms + "," + data[i];
+            for (int i = 0; i <contactosEstrechos.size() ; i++) {
+
+                sintomasDelContacto="";
+                counter=0;
+
+                FileReader fileReader = new FileReader("SintomasDeUsers" + File.separator + contactosEstrechos.get(i)+".txt");
+                BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+                line = bufferedReader.readLine();
+
+                while (line!=null){
+
+                    counter++;
+                    sintomasDelContacto = line + "," + sintomasDelContacto;
+
+                    for (int j = 0; j <sintomasPresentados.size() ; j++) {
+                        if (line.equals(sintomasPresentados.get(j))){
+                            sintomasCoincidentesConContactos.add(sintomasPresentados.get(i));
+                        }
+                    }
+
+                    line = bufferedReader.readLine();
                 }
-                if (data.length <= 1) {
-                    return;
+
+                if (counter>=2){
+                    JOptionPane.showMessageDialog(null, "El telefono: " + contactosEstrechos.get(i) + " con quien tuviste contacto, presento los siguientes sintomas: " + sintomasDelContacto, "A CUIDARSE!", JOptionPane.INFORMATION_MESSAGE);
                 }
-                JOptionPane.showMessageDialog(null, "El telefono: " + data[0] + " con quien tuviste contacto, presento los siguientes sintomas: " + allSintoms, "A CUIDARSE!", JOptionPane.INFORMATION_MESSAGE);
-                contactosConSintomas.put(data[0],allSintoms);
+
+                bufferedReader.close();
             }
-
-            bufferedReader.close();
-
-            PrintWriter writer = new PrintWriter(tel + ".txt");
-            writer.print("");
-            writer.close();
-
         } catch (Exception e) {
             System.out.println(e);
         }
-    }
-
-    public boolean fueContagiado (){
-        return fueContagiado;
-    }
-
-    public void setFueContagiado(boolean fueContagiado) {
-        this.fueContagiado = fueContagiado;
     }
 
 
@@ -335,7 +310,7 @@ public class User {
 
         try {
 
-            FileReader fileReader = new FileReader("Sintomas" + File.separator + tel+".txt");
+            FileReader fileReader = new FileReader("SintomasDeUsers" + File.separator + tel+".txt");
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
             while ((line = bufferedReader.readLine()) != null) {
@@ -347,7 +322,10 @@ public class User {
         } catch (Exception e) {
             System.out.println(e);
         }
-
     }
 
+
+    public ArrayList<String> getSintomasCoincidentesConContactos() {
+        return sintomasCoincidentesConContactos;
+    }
 }

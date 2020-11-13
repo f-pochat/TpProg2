@@ -33,7 +33,7 @@ public class LoginForm extends JFrame {
         User usuario = new User(telField.getText());
         if(usuario.matchesCuil(cuilField.getText())){
             tel = telField.getText();
-            usuario.TieneContactosConSintomas();
+            usuario.contactosConSintoma();
             JFrame usersMain = new UsersMain();
             usersMain.setVisible(true);
             usersMain.setResizable(false);

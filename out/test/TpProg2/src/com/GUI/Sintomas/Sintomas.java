@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Sintomas {
 
-    private final Map SintomasYCasos = new HashMap();
+    private final Map<String, Integer> SintomasYCasos = new HashMap();
 
     public Sintomas() {
         readSintomas();
@@ -13,14 +13,14 @@ public class Sintomas {
 
 
     public void addSintoma(String name) {
-        try{
-            if (SintomasYCasos.containsKey(name.toLowerCase())){
+        try {
+            if (SintomasYCasos.containsKey(name.toLowerCase())) {
                 System.out.println("El sintoma ya existe");
                 return;
             } else
-            SintomasYCasos.put(name.toLowerCase(),0);
+                SintomasYCasos.put(name.toLowerCase(), 0);
             writeSintomas();
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
@@ -31,13 +31,13 @@ public class Sintomas {
         if (number == -1) {
             return -1;
         } else
-            SintomasYCasos.replace(name.toLowerCase(),++number);
+            SintomasYCasos.replace(name.toLowerCase(), ++number);
         writeSintomas();
         return ++number;
 
     }
 
-    public List getListadeSintomas () {
+    public List getListadeSintomas() {
 
         List listaDeSintomas = new ArrayList();
         Set keys = SintomasYCasos.keySet();
@@ -49,7 +49,7 @@ public class Sintomas {
 
     public int getCantidadDeCasos(String name) {
         try {
-            for (int i = 0; i <SintomasYCasos.size() ; i++) {
+            for (int i = 0; i < SintomasYCasos.size(); i++) {
                 if (SintomasYCasos.containsKey(name.toLowerCase())) {
                     Integer number = (Integer) SintomasYCasos.get(name);
                     return number;
@@ -63,7 +63,7 @@ public class Sintomas {
         return -1;
     }
 
-    public void writeSintomas () {
+    public void writeSintomas() {
         try {
 
             PrintWriter writer = new PrintWriter("sintomas.txt");
@@ -83,13 +83,12 @@ public class Sintomas {
             fileWriter.close();
 
 
-
         } catch (Exception e) {
             System.out.println(e);
         }
     }
 
-    public void readSintomas (){
+    public void readSintomas() {
 
         String line;
 
@@ -115,16 +114,16 @@ public class Sintomas {
     public void writeSintomasOfAnUser(String tel, ArrayList<String> sintomasPresentados) {
         try {
 
-            PrintWriter writer = new PrintWriter("Sintomas" + File.separator + tel+".txt");
+            PrintWriter writer = new PrintWriter("SintomasDeUsers" + File.separator + tel + ".txt");
             writer.print("");
             writer.close();
 
 
-            FileWriter fileWriter = new FileWriter("Sintomas" + File.separator + tel+".txt", true);
+            FileWriter fileWriter = new FileWriter("SintomasDeUsers" + File.separator + tel + ".txt", true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
-            for (int i = 0; i <sintomasPresentados.size() ; i++) {
-                bufferedWriter.write(sintomasPresentados.get(i)+"\n");
+            for (int i = 0; i < sintomasPresentados.size(); i++) {
+                bufferedWriter.write(sintomasPresentados.get(i) + "\n");
             }
 
             bufferedWriter.flush();
@@ -137,15 +136,16 @@ public class Sintomas {
     }
 
 
-
-
-
-
-    public void clearSintomas (){
+    public void clearSintomas() {
         SintomasYCasos.clear();
     }
 
     public int size() {
         return SintomasYCasos.size();
+    }
+
+    public void restarUnCaso(String selected) {
+        int numeroCasosSelected = SintomasYCasos.get(selected);
+        SintomasYCasos.replace(selected, (numeroCasosSelected - 1));
     }
 }
