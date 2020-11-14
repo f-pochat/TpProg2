@@ -1,3 +1,0 @@
-toz,5
-fiebre,10
-dolorDeGarganta,20

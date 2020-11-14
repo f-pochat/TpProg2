@@ -2,17 +2,15 @@ package com.GUI.Users;
 
 import com.GUI.LoginForm;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import javax.swing.*;
 
 public class UsersMain extends JFrame {
     DefaultListModel<String> listModel = new DefaultListModel<>();
     DefaultListModel<String> listModel2 = new DefaultListModel<>();
     public UsersMain() {
-        initComponents();
-
-    }
+        initComponents(); }
 
     private void button2ActionPerformed(ActionEvent e) {
         JFrame sintomas = new UsersSintomas();

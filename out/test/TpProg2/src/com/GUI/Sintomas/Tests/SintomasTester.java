@@ -12,10 +12,11 @@ public class SintomasTester {
     public static final String FIEBRE = "fiebre";
     public static final String DOLOR_DE_GARGANTA = "dolorDeGarganta";
 
+    Sintomas listaDeSintomas = new Sintomas();
+
     @Test
     public void Test_001AgregarYPresentarSintomas(){
 
-        Sintomas listaDeSintomas = new Sintomas();
         listaDeSintomas.addSintoma(FIEBRE);
         listaDeSintomas.addSintoma(TOZ);
         listaDeSintomas.addSintoma(DOLOR_DE_GARGANTA);
@@ -25,8 +26,6 @@ public class SintomasTester {
         listaDeSintomas.addCaso(TOZ);
 
         listaDeSintomas.writeSintomas();
-        listaDeSintomas.clearSintomas();
-        listaDeSintomas.readSintomas();
 
         assertEquals(3,listaDeSintomas.size());
 
@@ -34,8 +33,18 @@ public class SintomasTester {
 
     }
 
+
     @Test
-    public void Test_002Borte(){
+    public void Test_002SintomaYaExiste(){
+
+        listaDeSintomas.addSintoma(FIEBRE);
+        assertEquals(3,listaDeSintomas.size());
+
+
+
+    }
+    @Test
+    public void Test_003Borte(){
 
         SistemaDeControl sist = new SistemaDeControl();
         sist.brote("fiebre",10);
@@ -43,4 +52,5 @@ public class SintomasTester {
         sist.brote("dolorDeGarganta",20);
 
     }
+
 }
