@@ -1,0 +1,4 @@
+tuvieja,0
+dolordegarganta,0
+fiebre,10
+toz,0

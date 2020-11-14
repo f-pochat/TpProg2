@@ -1,15 +1,32 @@
-package com.ReadersWriter;
+package com.GUI.Admins;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.HashMap;
 import java.util.Map;
-/**
- * FedePochat & SebaAdaro
- */
-public class AdminReader {
-    //Lee el archivo admin.txt y se fija si el usuario existe y concide con la contrasena
-    public static boolean findUserandPassword(String user, String password){
+
+public class Admin {
+    private String username;
+    private String password;
+
+    public Admin(String username) {
+        this.username = username;
+        password = userAndPass().get(username);
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public boolean matchesPassword(String password){
+       return password.equals(getPassword());
+    }
+
+    public Map<String,String> userAndPass(){
         try{
             FileReader fileReader = new FileReader("admin.txt");
             BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -20,16 +37,10 @@ public class AdminReader {
                 admins.put(data[0],data[1]);
             }
             fileReader.close();
-            if(admins.containsKey(user) && admins.get(user).equals(password)) {
-                return true;
-            }else{
-                return false;
-            }
-
+            return admins;
         }catch(Exception e){
             System.out.println(e);
-            return false;
+            return null;
         }
-
     }
 }
