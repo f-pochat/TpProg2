@@ -1,6 +1,6 @@
 package com.GUI.Users;
 
-import com.GUI.SistemaDeControl;
+import com.GUI.Sintomas.SistemaDeControl;
 import com.GUI.Sintomas.Sintomas;
 
 import javax.swing.*;
@@ -232,7 +232,6 @@ public class User {
     public boolean addSintoma(String sintoma) {
 
         Sintomas listaDeSintomas = new Sintomas();
-        listaDeSintomas.readSintomas();
 
         int casoN = listaDeSintomas.addCaso(sintoma);
         if (casoN == -1) {

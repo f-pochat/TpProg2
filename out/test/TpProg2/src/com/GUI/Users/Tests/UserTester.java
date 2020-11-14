@@ -1,6 +1,6 @@
 package com.GUI.Users.Tests;
 
-import com.GUI.SistemaDeControl;
+import com.GUI.Sintomas.SistemaDeControl;
 import com.GUI.Users.User;
 import org.junit.Assert;
 import org.junit.Test;

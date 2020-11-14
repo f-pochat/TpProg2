@@ -1,12 +1,8 @@
 package com.GUI.Sintomas;
 
-import com.GUI.SistemaDeControl;
-
 import javax.swing.*;
 import java.io.*;
 import java.util.*;
-
-import static com.GUI.LoginForm.tel;
 
 public class Sintomas {
 
@@ -16,7 +12,7 @@ public class Sintomas {
 
         try {
 
-            File file2 = new File("brotes.txt");
+            File file2 = new File("cantDeCasosxSintoma.txt");
 
             if (!file2.exists()){
                 file2.createNewFile();
@@ -25,7 +21,6 @@ public class Sintomas {
         } catch (Exception e){
             System.out.println(e.getMessage());
         }
-        OrdenarCasos();
         readSintomas();
     }
 
@@ -56,7 +51,6 @@ public class Sintomas {
         } else
             SintomasYCasos.replace(name.toLowerCase(), ++number);
         writeSintomas();
-        OrdenarCasos();
         return ++number;
     }
 
@@ -79,11 +73,11 @@ public class Sintomas {
     public void writeSintomas() {
         try {
 
-            PrintWriter writer = new PrintWriter("brotes.txt"); // Limpio la pagina
+            PrintWriter writer = new PrintWriter("cantDeCasosxSintoma.txt"); // Limpio la pagina
             writer.print("");
             writer.close();
 
-            FileWriter fileWriter = new FileWriter("brotes.txt", true);
+            FileWriter fileWriter = new FileWriter("cantDeCasosxSintoma.txt", true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
             Set keys = SintomasYCasos.keySet();
@@ -107,7 +101,7 @@ public class Sintomas {
 
         try {
 
-            FileReader fileReader = new FileReader("brotes.txt");
+            FileReader fileReader = new FileReader("cantDeCasosxSintoma.txt");
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
             while ((line = bufferedReader.readLine()) != null) {
@@ -160,73 +154,6 @@ public class Sintomas {
     public void restarUnCaso(String selected) {
         int numeroCasosSelected = SintomasYCasos.get(selected);
         SintomasYCasos.replace(selected, (numeroCasosSelected - 1));
-        OrdenarCasos();
     }
 
-    public void OrdenarCasos() {
-
-        HashMap<String, Integer> sobreescribirBrotes = new HashMap<>();
-
-        String line;
-
-        try {
-
-            FileReader fileReader = new FileReader("brotes.txt");
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-
-            while ((line = bufferedReader.readLine()) != null) {
-                String[] data = line.split(",");
-                sobreescribirBrotes.put(data[0], Integer.valueOf(data[1]));
-            }
-
-            bufferedReader.close();
-
-            sobreescribirBrotes = sortByValue(sobreescribirBrotes);
-
-
-            PrintWriter writer = new PrintWriter("brotes.txt"); // Limpio la pagina
-            writer.print("");
-            writer.close();
-
-            FileWriter fileWriter = new FileWriter("brotes.txt", true);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-
-            Set keys = sobreescribirBrotes.keySet();
-            for (Object key : keys) {
-                bufferedWriter.write(key + "," + sobreescribirBrotes.get(key) + "\n");
-            }
-
-            SintomasYCasos = sobreescribirBrotes;
-
-            bufferedWriter.flush();
-            bufferedWriter.close();
-            fileWriter.close();
-
-
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
-    public static HashMap<String, Integer> sortByValue(HashMap<String, Integer> hm) {
-        // Create a list from elements of HashMap
-        List<Map.Entry<String, Integer>> list = new LinkedList<Map.Entry<String, Integer> >(hm.entrySet());
-
-        // Sort the list
-        Collections.sort(list, new Comparator<Map.Entry<String, Integer> >() {
-            public int compare(Map.Entry<String, Integer> o1,
-                               Map.Entry<String, Integer> o2)
-            {
-                return (o1.getValue()).compareTo(o2.getValue());
-            }
-        });
-
-        // put data from sorted list to hashmap
-        HashMap<String, Integer> temp = new LinkedHashMap<String, Integer>();
-        Collections.reverse(list);
-        for (Map.Entry<String, Integer> aa : list) {
-            temp.put(aa.getKey(), aa.getValue());
-        }
-
-        return temp;
-    }
 }
