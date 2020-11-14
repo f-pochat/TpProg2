@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {space ::173:x, par l {seq t {comp label5:::p::p, space :p:173:p}, seq t {par t {comp button2:::p:292:p, comp button1:::p:292:p}, space :p:133:p}}}}"
-			"$verticalGroup": "par l {seq l {space :p:101:p, comp label5:::p::p, space :p:38:p, comp button1:::p::p, space :p:26:p, comp button2:::p::p, space ::189:x}}"
+			"$horizontalGroup": "par l {seq {space :p:33:p, par l:::p {comp label2::::164:x, comp scrollPane1::::164:x}, par l {seq {space :p:90:p, comp label5:::p::p}, seq l {space :p:38:p, par l {comp button2:::p:299:p, comp button1:::p:299:p}}}, space :p:138:p}}"
+			"$verticalGroup": "par l {seq t {par l {seq {space :p:104:p, comp label5:::p::p, space ::28:x}, seq t {space ::130:x, comp label2:::p::p, space s:::p}}, par l {seq {comp button1:::p::p, space :p:32:p, comp button2:::p::p, space :p:190:p}, seq t {comp scrollPane1:::p:159:p, space :p:123:p}}}}"
 		} ) {
 			name: "this"
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -13,18 +13,25 @@ new FormModel {
 				"text": "Administradores"
 				"font": new java.awt.Font( "Doctor Glitch", 0, 26 )
 			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "Brotes"
+			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "button1"
-				"text": "Ingresar nuevo sintoma"
-				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
+				"text": "Agregar sinoma"
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "button2"
-				"text": "Ver cantidad de casos"
-				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
-				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
+				"text": "Ver casos por sintoma"
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button2ActionPerformed", true ) )
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "javax.swing.JList" ) {
+					name: "list1"
+				} )
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )

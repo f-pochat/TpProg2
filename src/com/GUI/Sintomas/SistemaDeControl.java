@@ -1,12 +1,10 @@
-package com.GUI;
+package com.GUI.Sintomas;
 
-import com.GUI.Sintomas.Sintomas;
 import com.GUI.Users.User;
 
 import javax.swing.*;
 import java.io.*;
 import java.util.*;
-import java.util.List;
 
 public class SistemaDeControl extends JFrame {
 
@@ -28,6 +26,14 @@ public class SistemaDeControl extends JFrame {
 
     }
 
+    public SistemaDeControl(){ // Lo usan los admins
+        OrdenarCasos("brotes.txt");
+        SintomasYCasos = readBrotes();
+        SintomasYCasos = sortByValue(SintomasYCasos);
+    }
+
+
+
     public HashMap<String,Integer> getSintomasYCasos() {
         return SintomasYCasos;
     }
@@ -35,42 +41,36 @@ public class SistemaDeControl extends JFrame {
     private void VerificarSiHayBrote(User thisUser) {
         for (int i = 0; i < contactosVerificados.size(); i++) {
             User anotherUser = new User(contactosVerificados.get(i));
-            if (anotherUser.getSintomasCoincidentesConContactos().contains(sintomasCoincidentesConContactos.get(i)) || posibleBroteHabilitado.contains(sintomasCoincidentesConContactos.get(i))) {
+            if (anotherUser.getSintomasCoincidentesConContactos().contains(sintomasCoincidentesConContactos.get(i))) {
                 PosibleBrote(sintomasCoincidentesConContactos.get(i));
                 posibleBroteHabilitado.add(sintomasCoincidentesConContactos.get(i));
+            } else if (posibleBroteHabilitado.contains(sintomasCoincidentesConContactos.get(i))){
+                PosibleBrote(sintomasCoincidentesConContactos.get(i));
             }
         }
     }
 
     private void PosibleBrote(String str) {
-        int casosDelBrote = readBrotes(str);
-        if (casosDelBrote != 0 ){
-            SumarCasos(str,true);
-            return;
-        }
+
         Sintomas listaDeSintomas = new Sintomas();
         if (listaDeSintomas.getCantidadDeCasos(str) >= 5) {
             brote(str, listaDeSintomas.getCantidadDeCasos(str));
         }
     }
 
-    private int readBrotes(String str) {
+    private HashMap<String, Integer> readBrotes() {
 
         String line;
+        HashMap<String, Integer> casos = new HashMap<>();
 
         try {
 
             FileReader fileReader = new FileReader("brotes.txt");
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-
-            line = bufferedReader.readLine();
-
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(",");
-                if (data[0].equals(str)){
-                    return Integer.parseInt(data[1]);
-                }
+                casos.put(data[0], Integer.valueOf(data[1]));
             }
 
             bufferedReader.close();
@@ -79,10 +79,10 @@ public class SistemaDeControl extends JFrame {
             System.out.println(e);
         }
 
-        return 0;
+        return casos;
     }
 
-    private void brote(String str, int cantidadDeCasos) {
+    public void brote(String str, int cantidadDeCasos) {
 
         System.out.println("Hay brote de: "+str);
 
@@ -96,13 +96,15 @@ public class SistemaDeControl extends JFrame {
             bufferedWriter.close();
             fileWriter.close();
 
+            OrdenarCasos("brotes.txt");
+
         } catch (Exception e) {
             System.out.println(e);
         }
     }
 
 
-    private void SumarCasos(String str, boolean necesitaSobreescribir) { // Como el metodo ordenar y el sumar un caso son parecidos, los meti los dos aca, diferenciandolos por un boolean
+    private void OrdenarCasos(String fileName) {
 
         HashMap<String,Integer> sobreescribirBrotes = new HashMap<>();
 
@@ -110,17 +112,12 @@ public class SistemaDeControl extends JFrame {
 
         try {
 
-            FileReader fileReader = new FileReader("brotes.txt");
+            FileReader fileReader = new FileReader(fileName);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
-
-            line = bufferedReader.readLine();
 
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(",");
-                if (data[0].equals(str) && necesitaSobreescribir){
-                    sobreescribirBrotes.put(data[0], Integer.valueOf(data[1])+1);
-                } else
-                    sobreescribirBrotes.put(data[0], Integer.valueOf(data[1]));
+                sobreescribirBrotes.put(data[0], Integer.valueOf(data[1]));
             }
 
             bufferedReader.close();
@@ -128,11 +125,11 @@ public class SistemaDeControl extends JFrame {
             sobreescribirBrotes = sortByValue(sobreescribirBrotes);
 
 
-            PrintWriter writer = new PrintWriter("brotes.txt"); // Limpio la pagina
+            PrintWriter writer = new PrintWriter(fileName); // Limpio la pagina
             writer.print("");
             writer.close();
 
-            FileWriter fileWriter = new FileWriter("brotes.txt", true);
+            FileWriter fileWriter = new FileWriter(fileName, true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
             Set keys = sobreescribirBrotes.keySet();

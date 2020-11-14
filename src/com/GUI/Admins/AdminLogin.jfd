@@ -4,7 +4,7 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq l {space :p:201:p, par l {comp label3:::p::p, seq t {comp label4:::p::p, space :p:25:p}}, par l:::p {comp userField::::208:x, comp passwordField:::::x}, space ::98:x}, seq t {space ::283:x, par l {comp label5:::p::p, par l {seq t {comp button2:::p::p, space :p:34:p}, seq t {comp button1:::p::p, space :p:237:p}}}}}"
+			"$horizontalGroup": "par l {seq l {space :p:201:p, par l {comp label3:::p::p, seq t {comp label4:::p::p, space :p:25:p}}, par l:::p {comp userField::::208:x, comp passwordField:::::x}, space ::98:x}, seq t {space ::237:x, par l {seq t {comp button2:::p::p, space :p:34:p}, seq t {comp button1:::p::p, space :p:237:p}, seq t {comp label5:::p::p, space :p:153:p}}}}"
 			"$verticalGroup": "par l {seq t {space :p:35:p, comp button2:::p::p, space :p:43:p, comp label5:::::p, space ::67:x, par b {comp label3::b:p::p, comp userField::b:p::p}, space s:::p, par l {seq {comp label4:::p::p, space :p:86:p, comp button1:::p::p}, comp passwordField:::p::p}, space :p:59:p}}"
 		} ) {
 			name: "this"

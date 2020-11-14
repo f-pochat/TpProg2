@@ -6,10 +6,9 @@ package com.GUI.Admins;
 
 import com.GUI.LoginForm;
 
-import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.GroupLayout;
+import java.awt.*;
+import java.awt.event.ActionEvent;
 
 /**
  * FedePochat
@@ -85,7 +84,6 @@ public class AdminLogin extends JFrame {
         button1.setFont(new Font("Doctor Glitch", Font.PLAIN, 12));
         button1.addActionListener(e -> {
 			button1ActionPerformed(e);
-			button1ActionPerformed(e);
 		});
 
         //---- button2 ----
@@ -93,7 +91,6 @@ public class AdminLogin extends JFrame {
         button2.setFont(new Font("Doctor Glitch", Font.PLAIN, 12));
         button2.addActionListener(e -> {
 			button2ActionPerformed(e);
-			backActionPerformed(e);
 		});
 
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
@@ -112,16 +109,17 @@ public class AdminLogin extends JFrame {
                         .addComponent(passwordField))
                     .addContainerGap(98, Short.MAX_VALUE))
                 .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
-                    .addContainerGap(283, Short.MAX_VALUE)
+                    .addContainerGap(237, Short.MAX_VALUE)
                     .addGroup(contentPaneLayout.createParallelGroup()
-                        .addComponent(label5)
-                        .addGroup(contentPaneLayout.createParallelGroup()
-                            .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
-                                .addComponent(button2)
-                                .addGap(34, 34, 34))
-                            .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
-                                .addComponent(button1)
-                                .addGap(237, 237, 237)))))
+                        .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
+                            .addComponent(button2)
+                            .addGap(34, 34, 34))
+                        .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
+                            .addComponent(button1)
+                            .addGap(237, 237, 237))
+                        .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
+                            .addComponent(label5)
+                            .addGap(153, 153, 153))))
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
