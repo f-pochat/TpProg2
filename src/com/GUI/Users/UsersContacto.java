@@ -1,14 +1,14 @@
 package com.GUI.Users;
 
+import com.GUI.LoginForm;
+import com.ReadersWriter.UserWriterReader;
+
+import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.Date;
-import javax.swing.*;
-
-import com.GUI.LoginForm;
-import com.ReadersWriter.UserWriterReader;
 
 
 public class UsersContacto extends JFrame implements PropertyChangeListener {
@@ -17,7 +17,7 @@ public class UsersContacto extends JFrame implements PropertyChangeListener {
     }
 
 
-    private void backActionPerformed(ActionEvent e) {
+    private void backActionPerformed(ActionEvent e) { //boton volver hacia atras
         JFrame usersMain = new UsersMain();
         usersMain.setVisible(true);
         usersMain.setResizable(false);
@@ -49,7 +49,7 @@ public class UsersContacto extends JFrame implements PropertyChangeListener {
     }
 
 
-    private void InformarBttActionPerformed(ActionEvent e) {
+    private void InformarBttActionPerformed(ActionEvent e) { //Los errores de los users
         User usuario = new User(LoginForm.tel);
         try{
             Date inicio = (Date) InicioTxt.getValue();

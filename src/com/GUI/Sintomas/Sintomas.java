@@ -29,7 +29,7 @@ public class Sintomas {
     }
 
 
-    public void addSintoma(String name) {
+    public void addSintoma(String name) { //Agrega los posibles sintomas que puede tener el user por parte del admin
         try {
             if (SintomasYCasos.containsKey(name.toLowerCase())) {
                 JOptionPane.showMessageDialog(null,"El sintoma ya existe");
@@ -43,7 +43,7 @@ public class Sintomas {
         }
     }
 
-    public int addCaso(String name) {
+    public int addCaso(String name) { //se agrega un caso de ese sintoma
 
         int number = getCantidadDeCasos(name.toLowerCase());
         if (number == -1) {
@@ -54,7 +54,7 @@ public class Sintomas {
         return ++number;
     }
 
-    public int getCantidadDeCasos(String name) {
+    public int getCantidadDeCasos(String name) { //cuenta la cantidad de casos de ese sintoma
         try {
             for (int i = 0; i < SintomasYCasos.size(); i++) {
                 if (SintomasYCasos.containsKey(name.toLowerCase())) {
@@ -70,7 +70,7 @@ public class Sintomas {
         return -1;
     }
 
-    public void writeSintomas() {
+    public void writeSintomas() { //Escribe los sintomas y la cantidad de casos de estos
         try {
 
             PrintWriter writer = new PrintWriter("cantDeCasosxSintoma.txt"); // Limpio la pagina
@@ -95,7 +95,7 @@ public class Sintomas {
         }
     }
 
-    public void readSintomas() {
+    public void readSintomas() { //lee los sintomas existentes
 
         String line;
 
@@ -118,7 +118,7 @@ public class Sintomas {
 
     }
 
-    public void writeSintomasOfAnUser(String tel, ArrayList<String> sintomasPresentados) {
+    public void writeSintomasOfAnUser(String tel, ArrayList<String> sintomasPresentados) { //crea un .txt para cada user con el telefono y escribe los sintomas que adquiere
         try {
 
             PrintWriter writer = new PrintWriter("SintomasDeUsers" + File.separator + tel + ".txt");

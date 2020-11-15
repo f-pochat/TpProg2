@@ -38,7 +38,7 @@ public class SistemaDeControl extends JFrame {
         return SintomasYCasos;
     }
 
-    private void VerificarSiHayBrote(User thisUser) {
+    private void VerificarSiHayBrote(User thisUser) { //verifica si hay un brote
         for (int i = 0; i < contactosVerificados.size(); i++) {
             User anotherUser = new User(contactosVerificados.get(i));
             if (anotherUser.getSintomasCoincidentesConContactos().contains(sintomasCoincidentesConContactos.get(i))) {
@@ -50,7 +50,7 @@ public class SistemaDeControl extends JFrame {
         }
     }
 
-    private void PosibleBrote(String str) {
+    private void PosibleBrote(String str) { //chequea la posibilidad de un posible brote en el futuro
 
         Sintomas listaDeSintomas = new Sintomas();
         if (listaDeSintomas.getCantidadDeCasos(str) >= 5) {
@@ -58,7 +58,7 @@ public class SistemaDeControl extends JFrame {
         }
     }
 
-    private HashMap<String, Integer> readBrotes() {
+    private HashMap<String, Integer> readBrotes() { //lee los brotes existentes
 
         String line;
         HashMap<String, Integer> casos = new HashMap<>();
@@ -82,7 +82,7 @@ public class SistemaDeControl extends JFrame {
         return casos;
     }
 
-    public void brote(String str, int cantidadDeCasos) {
+    public void brote(String str, int cantidadDeCasos) { //Hace un anuncio sobre los brotes existentes
 
         System.out.println("Hay brote de: "+str);
 
@@ -104,7 +104,7 @@ public class SistemaDeControl extends JFrame {
     }
 
 
-    private void OrdenarCasos(String fileName) {
+    private void OrdenarCasos(String fileName) { //ordena los casos de los brotes y reescribe el .txt
 
         HashMap<String,Integer> sobreescribirBrotes = new HashMap<>();
 

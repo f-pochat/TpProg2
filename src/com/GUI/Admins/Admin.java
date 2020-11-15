@@ -22,11 +22,11 @@ public class Admin {
         return password;
     }
 
-    public boolean matchesPassword(String password){
+    public boolean matchesPassword(String password){ //chequea si conciden el nombre de usuario y la contraseña
        return password.equals(getPassword());
     }
 
-    public Map<String,String> userAndPass(){
+    public Map<String,String> userAndPass(){ //lee el archivo de admins
         try{
             FileReader fileReader = new FileReader("admin.txt");
             BufferedReader bufferedReader = new BufferedReader(fileReader);

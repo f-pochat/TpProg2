@@ -7,16 +7,14 @@ package com.GUI.Users;
 import com.GUI.LoginForm;
 import com.ReadersWriter.UserWriterReader;
 
-
-import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.GroupLayout;
+import java.awt.*;
+import java.awt.event.ActionEvent;
 
 /**
  * @author unknown
  */
-public class RegisterUser extends JFrame {
+public class RegisterUser extends JFrame { //Clase para registrar a una persona
     public RegisterUser() {
         initComponents();
     }
