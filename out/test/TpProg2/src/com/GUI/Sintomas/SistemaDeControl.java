@@ -166,6 +166,9 @@ public class SistemaDeControl extends JFrame {
 
         // put data from sorted list to hashmap
         HashMap<String, Integer> temp = new LinkedHashMap<String, Integer>();
+        Collections.reverse(list);
+
+
         for (Map.Entry<String, Integer> aa : list) {
             temp.put(aa.getKey(), aa.getValue());
         }
