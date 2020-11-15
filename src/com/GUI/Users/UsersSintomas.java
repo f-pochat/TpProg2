@@ -2,10 +2,9 @@ package com.GUI.Users;
 
 import com.GUI.LoginForm;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.util.Date;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
 
 public class UsersSintomas extends JFrame {
     User usuario;
@@ -75,6 +74,7 @@ public class UsersSintomas extends JFrame {
         button4.setText("Back");
         button4.setFont(new Font("Doctor Glitch", Font.PLAIN, 12));
         button4.addActionListener(e -> {
+			button2ActionPerformed(e);
 			backActionPerformed(e);
 		});
 

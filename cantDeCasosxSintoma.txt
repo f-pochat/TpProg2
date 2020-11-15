@@ -1,3 +1,4 @@
 dolordegarganta,0
 fiebre,8
 tos,5
+dolordecabeza,0

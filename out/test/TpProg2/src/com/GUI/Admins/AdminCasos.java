@@ -1,19 +1,17 @@
 package com.GUI.Admins;
 
+import com.GUI.Sintomas.Sintomas;
+
+import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
-import java.util.ArrayList;
+import java.awt.event.ActionEvent;
 import java.util.HashMap;
 import java.util.Set;
-import javax.swing.*;
-
-import com.GUI.Sintomas.Sintomas;
-import net.miginfocom.swing.*;
 
 public class AdminCasos extends JFrame {
 
     DefaultListModel<String> listModel = new DefaultListModel<>();
-    HashMap casos = new HashMap();
+    HashMap casos;
 
     public AdminCasos() {
         initComponents();

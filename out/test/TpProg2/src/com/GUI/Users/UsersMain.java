@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 public class UsersMain extends JFrame {
     DefaultListModel<String> listModel = new DefaultListModel<>();
     DefaultListModel<String> listModel2 = new DefaultListModel<>();
+
     public UsersMain() {
         initComponents(); }
 

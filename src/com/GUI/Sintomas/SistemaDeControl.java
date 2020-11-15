@@ -38,7 +38,7 @@ public class SistemaDeControl extends JFrame {
         return SintomasYCasos;
     }
 
-    private void VerificarSiHayBrote(User thisUser) { //verifica si hay un brote
+    private void VerificarSiHayBrote(User thisUser) { //verifica si hay un contacto de grado 2
         for (int i = 0; i < contactosVerificados.size(); i++) {
             User anotherUser = new User(contactosVerificados.get(i));
             if (anotherUser.getSintomasCoincidentesConContactos().contains(sintomasCoincidentesConContactos.get(i))) {
@@ -50,8 +50,7 @@ public class SistemaDeControl extends JFrame {
         }
     }
 
-    private void PosibleBrote(String str) { //chequea la posibilidad de un posible brote en el futuro
-
+    private void PosibleBrote(String str) { //chequea si el sintoma str presenta mas de 5 casos, donde se convierte en brote
         Sintomas listaDeSintomas = new Sintomas();
         if (listaDeSintomas.getCantidadDeCasos(str) >= 5) {
             brote(str, listaDeSintomas.getCantidadDeCasos(str));

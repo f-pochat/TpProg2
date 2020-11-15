@@ -1,25 +1,22 @@
 package com.GUI.Users;
 
-import java.awt.BorderLayout;
-import java.awt.Container;
+import com.mindfusion.common.DateTime;
+import com.mindfusion.scheduling.Calendar;
+import com.mindfusion.scheduling.ThemeType;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.Date;
-
-import javax.swing.JFrame;
-
-import com.mindfusion.scheduling.Calendar;
-import com.mindfusion.scheduling.ThemeType;
-import com.mindfusion.common.*;
 
 
 public class CalendarWindow extends JFrame {
 
     /**
-     *
+     *Calendario utilizado para que informen de cuando a cuando dos personas tuvieron contacto
      */
     private static final long serialVersionUID = 1L;
 

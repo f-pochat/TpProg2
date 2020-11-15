@@ -31,6 +31,10 @@ public class LoginForm extends JFrame {
         // TODO add your code here
         //Se fija si existe ese usuario en users.txt
         User usuario = new User(telField.getText());
+        if (usuario.isBloqued()){
+            JOptionPane.showMessageDialog(null, "Su usuario ha sido bloqueado, debe esperar a que un administrador lo desbloquee");
+            return;
+        }
         if(usuario.matchesCuil(cuilField.getText())){
             tel = telField.getText();
             avisoALosContactos = usuario.contactosConSintoma();
@@ -46,7 +50,6 @@ public class LoginForm extends JFrame {
         }else{
             JOptionPane.showMessageDialog(null, "Tel y/o Cuil Incorrecto");
         }
-
 
     }
 

@@ -37,18 +37,13 @@ public class AdminLogin extends JFrame {
         }
     }
 
-    //Boton para volver a el Login normal
-    private void backActionPerformed(ActionEvent e) {
-        // TODO add your code here
+
+    private void button2ActionPerformed(ActionEvent e) {
         JFrame mainLogin = new LoginForm();
         mainLogin.setVisible(true);
         mainLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainLogin.setResizable(false);
         this.setVisible(false);
-    }
-
-    private void button2ActionPerformed(ActionEvent e) {
-        // TODO add your code here
     }
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents

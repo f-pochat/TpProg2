@@ -38,7 +38,7 @@ public class SistemaDeControl extends JFrame {
         return SintomasYCasos;
     }
 
-    private void VerificarSiHayBrote(User thisUser) {
+    private void VerificarSiHayBrote(User thisUser) { //verifica si hay un contacto de grado 2
         for (int i = 0; i < contactosVerificados.size(); i++) {
             User anotherUser = new User(contactosVerificados.get(i));
             if (anotherUser.getSintomasCoincidentesConContactos().contains(sintomasCoincidentesConContactos.get(i))) {
@@ -50,15 +50,14 @@ public class SistemaDeControl extends JFrame {
         }
     }
 
-    private void PosibleBrote(String str) {
-
+    private void PosibleBrote(String str) { //chequea si el sintoma str presenta mas de 5 casos, donde se convierte en brote
         Sintomas listaDeSintomas = new Sintomas();
         if (listaDeSintomas.getCantidadDeCasos(str) >= 5) {
             brote(str, listaDeSintomas.getCantidadDeCasos(str));
         }
     }
 
-    private HashMap<String, Integer> readBrotes() {
+    private HashMap<String, Integer> readBrotes() { //lee los brotes existentes
 
         String line;
         HashMap<String, Integer> casos = new HashMap<>();
@@ -82,7 +81,7 @@ public class SistemaDeControl extends JFrame {
         return casos;
     }
 
-    public void brote(String str, int cantidadDeCasos) {
+    public void brote(String str, int cantidadDeCasos) { //Hace un anuncio sobre los brotes existentes
 
         System.out.println("Hay brote de: "+str);
 
@@ -104,7 +103,7 @@ public class SistemaDeControl extends JFrame {
     }
 
 
-    private void OrdenarCasos(String fileName) {
+    private void OrdenarCasos(String fileName) { //ordena los casos de los brotes y reescribe el .txt
 
         HashMap<String,Integer> sobreescribirBrotes = new HashMap<>();
 
@@ -166,7 +165,7 @@ public class SistemaDeControl extends JFrame {
 
         // put data from sorted list to hashmap
         HashMap<String, Integer> temp = new LinkedHashMap<String, Integer>();
-        Collections.reverse(list);
+        Collections.reverse(list); // La pone de mayor a menor
 
 
         for (Map.Entry<String, Integer> aa : list) {

@@ -6,6 +6,8 @@ package com.GUI.Admins;
 
 import com.GUI.Sintomas.Sintomas;
 import com.GUI.Sintomas.SistemaDeControl;
+import com.GUI.Users.User;
+import com.ReadersWriter.UserWriterReader;
 
 import javax.swing.*;
 import java.awt.*;
@@ -54,8 +56,32 @@ public class AdminMain extends JFrame {
         this.setVisible(false);
     }
 
+    private void button3ActionPerformed(ActionEvent e) {
+        JFrame usuariosBloqueados = new UsuariosBloqueados();
+        usuariosBloqueados.setVisible(true);
+        usuariosBloqueados.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        usuariosBloqueados.setResizable(false);
+        this.setVisible(false);
+    }
+
+    private void button4ActionPerformed(ActionEvent e) {
+        String telefono = JOptionPane.showInputDialog("Ingrese el telefono del usuario:");
+        if (!UserWriterReader.containsTel(telefono)){
+            JOptionPane.showMessageDialog(null,"El telefono ingresado no pertenece a un usuario registrado");
+            return;
+        }
+        User usuario = new User(telefono);
+        if (usuario.isBloqued()){
+            JOptionPane.showMessageDialog(null,"El usuario ya esta bloqueado");
+            return;
+        }
+        usuario.bloquearUsuario(telefono);
+        JOptionPane.showMessageDialog(null,"Usuario "+telefono+" bloqueado con exito");
+    }
+
     private void initComponents() {
         Admin administrador = new Admin(AdminLogin.tel);
+
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Ignacio Ferrari
         label5 = new JLabel();
@@ -64,6 +90,8 @@ public class AdminMain extends JFrame {
         button2 = new JButton();
         scrollPane1 = new JScrollPane();
         list1 = new JList();
+        button3 = new JButton();
+        button4 = new JButton();
 
         //======== this ========
         var contentPane = getContentPane();
@@ -88,16 +116,13 @@ public class AdminMain extends JFrame {
             scrollPane1.setViewportView(list1);
         }
 
-        list1.setModel(new AbstractListModel<String>() {
-            String[] values = {
-                    "Contactos"
-            };
-            @Override
-            public int getSize() { return values.length; }
-            @Override
-            public String getElementAt(int i) { return values[i]; }
-        });
-        scrollPane1.setViewportView(list1);
+        //---- button3 ----
+        button3.setText("Usuarios bloqueados");
+        button3.addActionListener(e -> { button3ActionPerformed(e); });
+
+        //---- button4 ----
+        button4.setText("Bloquear un usuario");
+        button4.addActionListener(e -> { button4ActionPerformed(e); });
 
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
@@ -115,8 +140,10 @@ public class AdminMain extends JFrame {
                         .addGroup(contentPaneLayout.createSequentialGroup()
                             .addGap(38, 38, 38)
                             .addGroup(contentPaneLayout.createParallelGroup()
+                                .addComponent(button1, GroupLayout.PREFERRED_SIZE, 299, GroupLayout.PREFERRED_SIZE)
                                 .addComponent(button2, GroupLayout.PREFERRED_SIZE, 299, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(button1, GroupLayout.PREFERRED_SIZE, 299, GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(button3, GroupLayout.PREFERRED_SIZE, 299, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(button4, GroupLayout.PREFERRED_SIZE, 299, GroupLayout.PREFERRED_SIZE))))
                     .addGap(138, 138, 138))
         );
         contentPaneLayout.setVerticalGroup(
@@ -131,15 +158,17 @@ public class AdminMain extends JFrame {
                             .addContainerGap(130, Short.MAX_VALUE)
                             .addComponent(label2)
                             .addGap(18, 18, 18)))
-                    .addGroup(contentPaneLayout.createParallelGroup()
+                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
                         .addGroup(contentPaneLayout.createSequentialGroup()
                             .addComponent(button1)
-                            .addGap(32, 32, 32)
+                            .addGap(18, 18, 18)
                             .addComponent(button2)
-                            .addGap(190, 190, 190))
-                        .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
-                            .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 159, GroupLayout.PREFERRED_SIZE)
-                            .addGap(123, 123, 123))))
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(button4)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(button3))
+                        .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 159, GroupLayout.PREFERRED_SIZE))
+                    .addGap(123, 123, 123))
         );
         pack();
         setLocationRelativeTo(getOwner());
@@ -155,5 +184,7 @@ public class AdminMain extends JFrame {
     private JButton button2;
     private JScrollPane scrollPane1;
     private JList list1;
+    private JButton button3;
+    private JButton button4;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

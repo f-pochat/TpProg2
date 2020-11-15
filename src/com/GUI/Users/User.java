@@ -14,6 +14,10 @@ public class User {
     private ArrayList<String> content;
     //private ArrayList<String> sintomas = new ArrayList<>();
     private ArrayList<String> contactosEstrechos = new ArrayList<>();
+    private ArrayList<String> usuariosBloqueados = new ArrayList<>();
+    private HashMap<String,Integer> contactosYRechazos = new HashMap<>();
+
+    private boolean bloqueado;
 
 
     private ArrayList<String> sintomasCoincidentesConContactos = new ArrayList<>();
@@ -26,7 +30,7 @@ public class User {
     }
 
 
-    public User(String tel) { //chequea si la persona ya esta registrada solo con el telefono
+    public User(String tel) { //chequea si la persona ya esta registrado solo con el telefono
 
         if (telsList().contains(tel)) {
             this.tel = tel;
@@ -43,6 +47,12 @@ public class User {
         try {
 
             readSintomasPresentados();
+            readUsuariosBloqueados();
+            readCantDeRechazos();
+
+            if (usuariosBloqueados.contains(tel)){
+                bloqueado =true;
+            }
 
 
         } catch (Exception e) {
@@ -52,10 +62,20 @@ public class User {
 
     }
 
+
+
     public User(String tel, String cuil) {
         this.tel = tel;
         this.cuil = cuil;
         addUser(tel, cuil);
+    }
+
+    public void setBloqueo(){
+        bloqueado =false;
+    }
+
+    public boolean isBloqued(){
+        return bloqueado;
     }
 
     public void addUser(String tel, String cuil) { //agrega un usuario al .txt de user registrandolo
@@ -208,6 +228,7 @@ public class User {
 
     public void rejectContact(String otherUserTel) { //Rejecta un contacto estrecho
         User otherUser = new User(otherUserTel);
+        sumarContactoRechazado(otherUserTel,0);
         otherUser.getContent().remove(getTel());
         int newNumofContacts = Integer.parseInt(otherUser.getContent().get(2)) - 1;
         otherUser.getContent().set(2, String.valueOf(newNumofContacts));
@@ -229,6 +250,7 @@ public class User {
             System.out.println(e + "C");
         }
     }
+
 
     public boolean addSintoma(String sintoma) { //agrega un sintoma
 
@@ -328,4 +350,138 @@ public class User {
     public ArrayList<String> getSintomasCoincidentesConContactos() {
         return sintomasCoincidentesConContactos;
     }
+
+    public void bloquearUsuario(Object key) {
+
+        try {
+
+            FileWriter fileWriter = new FileWriter("UsuariosBloqueados.txt", true);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+            bufferedWriter.write(key.toString());
+            bufferedWriter.flush();
+            bufferedWriter.close();
+            fileWriter.close();
+
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void desbloquearUsuario (){
+
+        bloqueado =false;
+        ArrayList<String> sobreescribirBloqueados = new ArrayList<>();
+
+        String line;
+
+        try {
+
+            FileReader fileReader = new FileReader("UsuariosBloqueados.txt");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+            while ((line = bufferedReader.readLine()) != null) {
+                if (!line.equals(tel)){
+                    sobreescribirBloqueados.add(line);
+                }
+            }
+
+            bufferedReader.close();
+
+            PrintWriter writer = new PrintWriter("UsuariosBloqueados.txt"); // Limpio la pagina
+            writer.print("");
+            writer.close();
+
+            FileWriter fileWriter = new FileWriter("UsuariosBloqueados.txt", true);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+            for (int i = 0; i <sobreescribirBloqueados.size() ; i++) {
+                bufferedWriter.write(sobreescribirBloqueados.get(i));
+            }
+
+            bufferedWriter.flush();
+            bufferedWriter.close();
+            fileWriter.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    private void readUsuariosBloqueados() {
+        try {
+
+            FileReader fileReader = new FileReader("UsuariosBloqueados.txt");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                usuariosBloqueados.add(line);
+            }
+            fileReader.close();
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public ArrayList<String> getusuariosBloqueados() {
+        return usuariosBloqueados;
+    }
+
+    public void sumarContactoRechazado(String otherUserTel,int numberOfRechazos) {
+
+        if (numberOfRechazos==0){
+            numberOfRechazos = contactosYRechazos.get(otherUserTel);
+        }
+        contactosYRechazos.replace(otherUserTel,++numberOfRechazos);
+
+        try {
+
+            PrintWriter writer = new PrintWriter("CantDeRechazos.txt"); // Limpio la pagina
+            writer.print("");
+            writer.close();
+
+            FileWriter fileWriter = new FileWriter("CantDeRechazos.txt", true);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+            Set keys = contactosYRechazos.keySet();
+            for (Object key : keys) {
+                    bufferedWriter.write(key + "," + contactosYRechazos.get(key) + "\n");
+            }
+
+            bufferedWriter.flush();
+            bufferedWriter.close();
+            fileWriter.close();
+
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void readCantDeRechazos() {
+        try {
+            FileReader fileReader = new FileReader("CantDeRechazos.txt");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+            String line;
+
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] data = line.split(",");
+                contactosYRechazos.put(data[0], Integer.valueOf(data[1]));
+                if (Integer.valueOf(data[1])>=5 && !usuariosBloqueados.contains(data[0])){
+                    bloquearUsuario(data[0]);
+                }
+            }
+
+            fileReader.close();
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+
+
+
 }
