@@ -49,7 +49,7 @@ public class UsersContacto extends JFrame implements PropertyChangeListener {
     }
 
 
-    private void InformarBttActionPerformed(ActionEvent e) { //Los errores de los users
+    private void InformarBttActionPerformed(ActionEvent e) { //Informa el contacto
         User usuario = new User(LoginForm.tel);
         try{
             Date inicio = (Date) InicioTxt.getValue();
