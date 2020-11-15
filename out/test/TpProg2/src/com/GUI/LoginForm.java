@@ -8,13 +8,12 @@ import com.GUI.Admins.AdminLogin;
 import com.GUI.Users.RegisterUser;
 import com.GUI.Users.User;
 import com.GUI.Users.UsersMain;
-import com.ReadersWriter.UserWriterReader;
 
-
-import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.GroupLayout;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+
 /**
  * FedePochat
  */
@@ -25,6 +24,7 @@ public class LoginForm extends JFrame {
     }
     public static String tel;
     public static String cuil;
+    private ArrayList avisoALosContactos = new ArrayList();
 
 
     private void button1ActionPerformed(ActionEvent e) {
@@ -33,7 +33,10 @@ public class LoginForm extends JFrame {
         User usuario = new User(telField.getText());
         if(usuario.matchesCuil(cuilField.getText())){
             tel = telField.getText();
-            usuario.contactosConSintoma();
+            avisoALosContactos = usuario.contactosConSintoma();
+            for (int i = 0; i <avisoALosContactos.size() ; i++) {
+                JOptionPane.showMessageDialog(null,avisoALosContactos.get(i), "A CUIDARSE!", JOptionPane.INFORMATION_MESSAGE);
+            }
             JFrame usersMain = new UsersMain();
             usersMain.setVisible(true);
             usersMain.setResizable(false);

@@ -43,7 +43,7 @@ public class User {
         try{
 
             readSintomasPresentados();
-            contactosConSintoma();
+
 
         } catch (Exception e){
             System.out.println(e.getMessage());
@@ -257,11 +257,12 @@ public class User {
         listaDeSintomas.restarUnCaso(selected);
     }
 
-    public void contactosConSintoma() {
+    public ArrayList contactosConSintoma() {
 
         String line;
         int counter;
         String sintomasDelContacto;
+        ArrayList aviso = new ArrayList();
 
         try {
 
@@ -280,6 +281,8 @@ public class User {
                     counter++;
                     sintomasDelContacto = line + "," + sintomasDelContacto;
 
+
+
                     for (int j = 0; j <sintomasPresentados.size() ; j++) {
                         if (line.equals(sintomasPresentados.get(j))){
                             sintomasCoincidentesConContactos.add(sintomasPresentados.get(i));
@@ -290,7 +293,7 @@ public class User {
                 }
 
                 if (counter>=2){
-                    JOptionPane.showMessageDialog(null, "El telefono: " + contactosEstrechos.get(i) + " con quien tuviste contacto, presento los siguientes sintomas: " + sintomasDelContacto, "A CUIDARSE!", JOptionPane.INFORMATION_MESSAGE);
+                    aviso.add("El telefono: "+contactosEstrechos.get(i)+" con quien tuviste contacto, presento los siguientes sintomas: " + sintomasDelContacto);
                 }
 
                 bufferedReader.close();
@@ -298,6 +301,7 @@ public class User {
         } catch (Exception e) {
             System.out.println(e);
         }
+        return aviso;
     }
 
 

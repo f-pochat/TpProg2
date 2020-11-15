@@ -2,17 +2,15 @@ package com.GUI.Users;
 
 import com.GUI.LoginForm;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import javax.swing.*;
 
 public class UsersMain extends JFrame {
     DefaultListModel<String> listModel = new DefaultListModel<>();
     DefaultListModel<String> listModel2 = new DefaultListModel<>();
     public UsersMain() {
-        initComponents();
-
-    }
+        initComponents(); }
 
     private void button2ActionPerformed(ActionEvent e) {
         JFrame sintomas = new UsersSintomas();
@@ -39,10 +37,18 @@ public class UsersMain extends JFrame {
         this.setVisible(false);
     }
 
+    private void button3ActionPerformed(ActionEvent e) {
+        JFrame brotes = new UsersBrote();
+        brotes.setVisible(true);
+        brotes.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        brotes.setResizable(false);
+        this.setVisible(false);
+    }
+
     private void initComponents() {
         User usuario = new User(LoginForm.tel);
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - unknown
+        // Generated using JFormDesigner Evaluation license - Ignacio Ferrari
         label5 = new JLabel();
         button1 = new JButton();
         button2 = new JButton();
@@ -76,7 +82,8 @@ public class UsersMain extends JFrame {
         button2.addActionListener(e -> button2ActionPerformed(e));
 
         //---- button3 ----
-        button3.setText("Mapa");
+        button3.setText("Ver brotes");
+        button3.addActionListener(e -> button3ActionPerformed(e));
 
         //---- label1 ----
         label1.setText("Text");
@@ -128,7 +135,7 @@ public class UsersMain extends JFrame {
         contentPaneLayout.setHorizontalGroup(
             contentPaneLayout.createParallelGroup()
                 .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
-                    .addContainerGap(248, Short.MAX_VALUE)
+                    .addContainerGap(234, Short.MAX_VALUE)
                     .addGroup(contentPaneLayout.createParallelGroup()
                         .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
                             .addComponent(label1, GroupLayout.PREFERRED_SIZE, 132, GroupLayout.PREFERRED_SIZE)
@@ -151,10 +158,10 @@ public class UsersMain extends JFrame {
                             .addComponent(scrollPane2, GroupLayout.PREFERRED_SIZE, 134, GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)))
                     .addGroup(contentPaneLayout.createParallelGroup()
-                        .addComponent(button3, GroupLayout.PREFERRED_SIZE, 277, GroupLayout.PREFERRED_SIZE)
                         .addComponent(button2, GroupLayout.PREFERRED_SIZE, 277, GroupLayout.PREFERRED_SIZE)
                         .addComponent(button4, GroupLayout.PREFERRED_SIZE, 277, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(button1, GroupLayout.PREFERRED_SIZE, 277, GroupLayout.PREFERRED_SIZE))
+                        .addComponent(button1, GroupLayout.PREFERRED_SIZE, 277, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(button3, GroupLayout.PREFERRED_SIZE, 277, GroupLayout.PREFERRED_SIZE))
                     .addGap(104, 104, 104))
         );
         contentPaneLayout.setVerticalGroup(
@@ -167,34 +174,35 @@ public class UsersMain extends JFrame {
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(label2)
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(contentPaneLayout.createParallelGroup()
+                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                         .addGroup(contentPaneLayout.createSequentialGroup()
                             .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(label3)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED))
-                        .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(scrollPane2, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap(46, Short.MAX_VALUE))
+                        .addGroup(contentPaneLayout.createSequentialGroup()
                             .addComponent(button1)
                             .addGap(18, 18, 18)
                             .addComponent(button4)
                             .addGap(18, 18, 18)
                             .addComponent(button2)
-                            .addGap(27, 27, 27)))
-                    .addGroup(contentPaneLayout.createParallelGroup()
-                        .addComponent(scrollPane2, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(button3))
-                    .addContainerGap(34, Short.MAX_VALUE))
+                            .addGap(18, 18, 18)
+                            .addComponent(button3)
+                            .addGap(140, 140, 140))))
         );
         pack();
         setLocationRelativeTo(getOwner());
 
         //======== menu ========
         {
-            menu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
-            0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
-            . BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
-            red) ,menu. getBorder( )) ); menu. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
-            beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+            menu.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder
+            ( 0, 0 ,0 , 0) ,  "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border
+            .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069al\u006fg", java .awt . Font. BOLD ,12 ) ,java . awt
+            . Color .red ) ,menu. getBorder () ) ); menu. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void
+            propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062or\u0064er" .equals ( e. getPropertyName () ) )throw new RuntimeException( )
+            ;} } );
 
             GroupLayout menuLayout = new GroupLayout(menu);
             menu.setLayout(menuLayout);
@@ -229,7 +237,7 @@ public class UsersMain extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - unknown
+    // Generated using JFormDesigner Evaluation license - Ignacio Ferrari
     private JLabel label5;
     private JButton button1;
     private JButton button2;
