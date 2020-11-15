@@ -39,7 +39,7 @@ public class SistemaDeControl extends JFrame {
     }
 
     private void VerificarSiHayBrote(User thisUser) { //verifica si hay un contacto de grado 2
-        for (int i = 0; i < contactosVerificados.size(); i++) {
+        for (int i = 0; i < contactosVerificados.size() -1; i++) {
             User anotherUser = new User(contactosVerificados.get(i));
             if (anotherUser.getSintomasCoincidentesConContactos().contains(sintomasCoincidentesConContactos.get(i))) {
                 PosibleBrote(sintomasCoincidentesConContactos.get(i));
