@@ -1,3 +1,8 @@
-toz,5
-fiebre,10
-dolorDeGarganta,20
+0,0
+dolordegarganta,0
+estees0,0
+7,0
+hola,0
+aca,0
+toz,2
+fiebre,5

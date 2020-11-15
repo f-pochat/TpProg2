@@ -1,5 +1,8 @@
 package com.GUI;
 
+import com.GUI.Users.User;
+import com.ReadersWriter.UserWriterReader;
+
 import javax.swing.*;
 /**
  * FedePochat
@@ -12,5 +15,6 @@ public class Main {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
         frame.setVisible(true);
+
     }
 }

@@ -66,7 +66,8 @@ public class UsersContacto extends JFrame implements PropertyChangeListener {
             JOptionPane.showMessageDialog(null, "Contacto ya registrado");
             return;
         }else {
-            if (UserWriterReader.containsTel(TelTxt.getText())) {
+            UserWriterReader userWR = new UserWriterReader();
+            if (userWR.containsTel(TelTxt.getText())) {
                 JOptionPane.showMessageDialog(null, "Solicitud de encuentro enviada");
                 // Lo agrega al archivo
                 usuario.addContact(TelTxt.getText());

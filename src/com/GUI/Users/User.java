@@ -2,6 +2,7 @@ package com.GUI.Users;
 
 import com.GUI.Sintomas.SistemaDeControl;
 import com.GUI.Sintomas.Sintomas;
+import com.ReadersWriter.UserWriterReader;
 
 import javax.swing.*;
 import java.io.*;
@@ -12,7 +13,7 @@ public class User {
     private String tel;
     private String cuil;
     private ArrayList<String> content;
-    //private ArrayList<String> sintomas = new ArrayList<>();
+    UserWriterReader userWR = new UserWriterReader();
     private ArrayList<String> contactosEstrechos = new ArrayList<>();
 
 
@@ -41,10 +42,8 @@ public class User {
 
 
         try{
-
             readSintomasPresentados();
             contactosConSintoma();
-
         } catch (Exception e){
             System.out.println(e.getMessage());
         }
@@ -59,16 +58,11 @@ public class User {
     }
 
     public void addUser(String tel, String cuil) {
-        try{
-            FileWriter fileWriter = new FileWriter("users.txt",true);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            bufferedWriter.write( tel + "," + cuil+ ",0,");
-            bufferedWriter.flush();
-            bufferedWriter.close();
-            fileWriter.close();
-        }catch (Exception e){
-            System.out.println(e);
-        }
+        ArrayList<String> newUser = new ArrayList<>();
+        newUser.add(tel);
+        newUser.add(cuil);
+        newUser.add("0");
+        userWR.getContenido().add(newUser);
 
     }
     public String getTel() {
@@ -88,38 +82,14 @@ public class User {
         return cuil;
     }
 
-    private static ArrayList<ArrayList<String>> readFile(){
-        try {
-            FileReader fileReader = new FileReader("users.txt");
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            ArrayList<ArrayList<String>> user = new ArrayList<>();
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                List<String> content = Arrays.asList(line.split(","));
-                ArrayList<String> cont = new ArrayList<>(content);
-                user.add(cont);
-            }
-            fileReader.close();
-            return user;
-        }catch (Exception e){
-            System.out.println(e + "A");
-            return null;
-        }
-    }
 
     public ArrayList<String> readArray(){
-        try {
-            ArrayList<ArrayList<String>> users = readFile();
-            return users.get(telsList().indexOf(getTel()));
-        }catch (Exception e){
-            System.out.println(e + "B");
-            return null;
-        }
+        return userWR.getContenido().get(telsList().indexOf(getTel()));
     }
 
     public ArrayList<String> telsList(){
         ArrayList<String> tels = new ArrayList<>();
-        for (List<String> list : readFile()){
+        for (List<String> list : userWR.getContenido()){
             tels.add(list.get(0));
         }
         return tels;
@@ -147,23 +117,7 @@ public class User {
             content.add(contact);
             int newNumofContacts = Integer.parseInt(content.get(2))+1;
             content.set(2, String.valueOf(newNumofContacts));
-            try{
-                ArrayList<ArrayList<String>> users = readFile();
-                users.set(telsList().indexOf(getTel()),content);
-                FileWriter fileWriter = new FileWriter("users.txt");
-                BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-                for (int i = 0; i < users.size(); i++) {
-                    for (String str: users.get(i)){
-                        bufferedWriter.append(str + ",");
-                    }
-                    bufferedWriter.append("\n");
-                }
-                bufferedWriter.flush();
-                bufferedWriter.close();
-                fileWriter.close();
-            }catch (Exception e){
-                System.out.println(e + "C");
-            }
+            userWR.getContenido().set(telsList().indexOf(getTel()),content);
     }
 
     /*Estas 3 funciones dividen a los contactos en verificados o pendientes (no aceptada la solicitud)
@@ -205,28 +159,16 @@ public class User {
         return solicitudes;
     }
 
+    public void writeFile(){
+        userWR.writeFile();
+    }
+
     public void rejectContact(String otherUserTel){
         User otherUser = new User(otherUserTel);
         otherUser.getContent().remove(getTel());
         int newNumofContacts = Integer.parseInt(otherUser.getContent().get(2)) - 1;
         otherUser.getContent().set(2, String.valueOf(newNumofContacts));
-        try{
-            ArrayList<ArrayList<String>> users = otherUser.readFile();
-            users.set(telsList().indexOf(otherUser.getTel()),otherUser.getContent());
-            FileWriter fileWriter = new FileWriter("users.txt");
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            for (int i = 0; i < users.size(); i++) {
-                for (String str: users.get(i)){
-                    bufferedWriter.append(str + ",");
-                }
-                bufferedWriter.append("\n");
-            }
-            bufferedWriter.flush();
-            bufferedWriter.close();
-            fileWriter.close();
-        }catch (Exception e){
-            System.out.println(e + "C");
-        }
+        userWR.getContenido().set(telsList().indexOf(otherUser.getTel()),otherUser.getContent());
     }
 
     public boolean addSintoma(String sintoma) {

@@ -10,10 +10,36 @@ import java.util.*;
  * FedePochat & SebaAdaro
  */
 public class UserWriterReader {
-    //PREGUNTAR EN CLASE DE CONSULTA SI SE PUEDE USAR STATIC AHI
+    private ArrayList<ArrayList<String>> contenido;
+    public UserWriterReader(){
+        contenido = readFile();
+    }
+
+    private ArrayList<ArrayList<String>> readFile(){
+        try {
+            FileReader fileReader = new FileReader("users.txt");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            ArrayList<ArrayList<String>> user = new ArrayList<>();
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                List<String> content = Arrays.asList(line.split(","));
+                ArrayList<String> cont = new ArrayList<>(content);
+                user.add(cont);
+            }
+            fileReader.close();
+            return user;
+        }catch (Exception e){
+            System.out.println(e + "A");
+            return null;
+        }
+    }
+
+    public ArrayList<ArrayList<String>> getContenido() {
+        return contenido;
+    }
 
     //Lee y se fija si el archivo users.txt ya contiene ese tel
-    public static boolean containsTel(String tel){
+    public boolean containsTel(String tel){
         Map users = readTelandCuil();
         if(users.containsKey(tel)){
             return true;
@@ -22,7 +48,7 @@ public class UserWriterReader {
         }
     }
     //Lee y se fija si el archivo users.txt ya contiene ese cuil
-    public static boolean containsCuil(String cuil){
+    public boolean containsCuil(String cuil){
         Map users = readTelandCuil();
         if(users.containsValue(cuil)){
             return true;
@@ -31,7 +57,7 @@ public class UserWriterReader {
         }
     }
 
-    public static Map readTelandCuil(){
+    public Map readTelandCuil(){
         try {
             FileReader fileReader = new FileReader("users.txt");
             BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -46,6 +72,22 @@ public class UserWriterReader {
         }catch (Exception e){
             System.out.println(e);
             return null;
+        }
+    }
+
+    public void writeFile(){
+        try {
+            FileWriter fileWriter = new FileWriter("users.txt");
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            String line;
+            for (int i = 0; i < getContenido().size()-1;i++){
+                for (int j = 0; j < getContenido().get(i).size();j++){
+                    bufferedWriter.write(getContenido().get(i).get(j) + ",");
+                }
+                bufferedWriter.write(getContenido().get(i).get(getContenido().size()-1));
+            }
+        }catch (Exception e){
+            System.out.println(e + "A");
         }
     }
 

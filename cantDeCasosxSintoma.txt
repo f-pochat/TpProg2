@@ -1,6 +1,6 @@
 dolordegarganta,0
-fiebre,2
+fiebre,9
 fweofw,0
 yo,0
 gola,0
-toz,1
+toz,2
