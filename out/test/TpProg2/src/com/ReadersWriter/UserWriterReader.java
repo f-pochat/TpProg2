@@ -34,6 +34,14 @@ public class UserWriterReader {
         }
     }
 
+    public ArrayList<String> telsList(){
+        ArrayList<String> tels = new ArrayList<>();
+        for (List<String> list : getContenido()){
+            tels.add(list.get(0));
+        }
+        return tels;
+    }
+
     public ArrayList<ArrayList<String>> getContenido() {
         return contenido;
     }
@@ -75,16 +83,16 @@ public class UserWriterReader {
         }
     }
 
-    public void writeFile(){
+    public void writeFile(ArrayList<ArrayList<String>> contentOfFile){
         try {
             FileWriter fileWriter = new FileWriter("users.txt");
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             String line;
-            for (int i = 0; i < getContenido().size()-1;i++){
-                for (int j = 0; j < getContenido().get(i).size();j++){
-                    bufferedWriter.write(getContenido().get(i).get(j) + ",");
+            for (int i = 0; i < contentOfFile.size()-1;i++){
+                for (int j = 0; j < contentOfFile.get(i).size();j++){
+                    bufferedWriter.write(contentOfFile.get(i).get(j) + ",");
                 }
-                bufferedWriter.write(getContenido().get(i).get(getContenido().size()-1));
+                bufferedWriter.write(contentOfFile.get(i).get(contentOfFile.size()-1));
             }
         }catch (Exception e){
             System.out.println(e + "A");

@@ -10,27 +10,22 @@ import java.util.*;
 
 public class User {
 
+    //Declaracion de variables
     private String tel;
     private String cuil;
     private ArrayList<String> content;
     UserWriterReader userWR = new UserWriterReader();
+    ArrayList<ArrayList<String>> contenido;
     private ArrayList<String> contactosEstrechos = new ArrayList<>();
-
-
     private ArrayList<String> sintomasCoincidentesConContactos = new ArrayList<>();
-
     private final ArrayList<String> sintomasPresentados = new ArrayList();
 
-
-    public ArrayList<String> getSintomasPresentados() {
-        return sintomasPresentados;
-    }
-
-
+    //Constructores, se crea si existe el Usuario, si no, insertar con cuil
     public User(String tel) {
 
-        if (telsList().contains(tel)){
+        if (userWR.telsList().contains(tel)){
             this.tel = tel;
+            contenido = userWR.getContenido();
             content = readArray();
             cuil = content.get(1);
             if (!getContent().get(2).equals("0")){
@@ -39,7 +34,6 @@ public class User {
                 }
             }
         }
-
 
         try{
             readSintomasPresentados();
@@ -50,10 +44,10 @@ public class User {
 
 
     }
-
     public User(String tel,String cuil){
         this.tel = tel;
         this.cuil = cuil;
+        contenido = userWR.getContenido();
         addUser(tel,cuil);
     }
 
@@ -62,43 +56,40 @@ public class User {
         newUser.add(tel);
         newUser.add(cuil);
         newUser.add("0");
-        userWR.getContenido().add(newUser);
-
+        contenido.add(newUser);
+        writeFile();
     }
+
+    //Getters
     public String getTel() {
         return tel;
     }
-
-
-
     public ArrayList<String> getContent() {
         return content;
     }
     public ArrayList<String> getContactosEstrechos(){
         return contactosEstrechos;
     }
-
     public String getCuil() {
         return cuil;
     }
-
-
-    public ArrayList<String> readArray(){
-        return userWR.getContenido().get(telsList().indexOf(getTel()));
+    public ArrayList<String> getSintomasCoincidentesConContactos() {
+        return sintomasCoincidentesConContactos;
+    }
+    public ArrayList<String> getSintomasPresentados() {
+        return sintomasPresentados;
     }
 
-    public ArrayList<String> telsList(){
-        ArrayList<String> tels = new ArrayList<>();
-        for (List<String> list : userWR.getContenido()){
-            tels.add(list.get(0));
-        }
-        return tels;
+    //Toma el contenido de ese usuario en la lectura del Arraylist
+    public ArrayList<String> readArray(){
+        return contenido.get(userWR.telsList().indexOf(getTel()));
     }
 
     public boolean matchesCuil(String enteredCuil){
         return enteredCuil.equals(cuil);
     }
 
+    //Si el usuario tiene a otro de contacto
     public boolean containsContact(String contact){
         if(getContent().get(2).equals("0")){
             return false;
@@ -117,7 +108,8 @@ public class User {
             content.add(contact);
             int newNumofContacts = Integer.parseInt(content.get(2))+1;
             content.set(2, String.valueOf(newNumofContacts));
-            userWR.getContenido().set(telsList().indexOf(getTel()),content);
+            contenido.set(userWR.telsList().indexOf(getTel()),content);
+            //writeFile();
     }
 
     /*Estas 3 funciones dividen a los contactos en verificados o pendientes (no aceptada la solicitud)
@@ -151,7 +143,7 @@ public class User {
 
     public ArrayList<String> getSolicitudesdeContacto(){
         ArrayList<String> solicitudes = new ArrayList<>();
-        for (String str : telsList()){
+        for (String str : userWR.telsList()){
             if (containsMe(str) && !getContactosEstrechos().contains(str)){
                 solicitudes.add(str);
             }
@@ -159,16 +151,17 @@ public class User {
         return solicitudes;
     }
 
-    public void writeFile(){
-        userWR.writeFile();
-    }
-
     public void rejectContact(String otherUserTel){
         User otherUser = new User(otherUserTel);
         otherUser.getContent().remove(getTel());
         int newNumofContacts = Integer.parseInt(otherUser.getContent().get(2)) - 1;
         otherUser.getContent().set(2, String.valueOf(newNumofContacts));
-        userWR.getContenido().set(telsList().indexOf(otherUser.getTel()),otherUser.getContent());
+        contenido.set(userWR.telsList().indexOf(otherUser.getTel()),otherUser.getContent());
+        writeFile();
+    }
+
+    public void writeFile(){
+        userWR.writeFile(contenido);
     }
 
     public boolean addSintoma(String sintoma) {
@@ -261,10 +254,5 @@ public class User {
         } catch (Exception e) {
             System.out.println(e);
         }
-    }
-
-
-    public ArrayList<String> getSintomasCoincidentesConContactos() {
-        return sintomasCoincidentesConContactos;
     }
 }

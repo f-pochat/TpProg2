@@ -17,6 +17,7 @@ import javax.swing.GroupLayout;
  * @author unknown
  */
 public class RegisterUser extends JFrame {
+
     public RegisterUser() {
         initComponents();
     }
@@ -31,13 +32,14 @@ public class RegisterUser extends JFrame {
     }
 
     private void button3ActionPerformed(ActionEvent e) {
+        UserWriterReader userWR = new UserWriterReader();
         // Si el telefono y el cuil son solo numeros
         if(telField.getText().matches("-?\\d+(\\.\\d+)?") && cuilField.getText().matches("-?\\d+(\\.\\d+)?")){
             //Si users.txt contiene ese tel
-            if (UserWriterReader.containsTel(telField.getText())){
+            if (userWR.containsTel(telField.getText())){
                 JOptionPane.showMessageDialog(null, "Telefono ya registrado");
                 //Si users.txt contiene ese cuil
-            }else if(UserWriterReader.containsCuil(cuilField.getText())){
+            }else if(userWR.containsCuil(cuilField.getText())){
                 JOptionPane.showMessageDialog(null, "CUIL ya registrado");
                 //Sino escribir y registrar ese usuario y entrar
             }else{
