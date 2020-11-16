@@ -358,7 +358,7 @@ public class User {
             FileWriter fileWriter = new FileWriter("UsuariosBloqueados.txt", true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
-            bufferedWriter.write(key.toString());
+            bufferedWriter.write(key.toString() + "\n");
             bufferedWriter.flush();
             bufferedWriter.close();
             fileWriter.close();
