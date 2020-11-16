@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 
 public class SintomasTester {
 
-    public static final String TOZ = "toz";
+    public static final String TOS = "tos";
     public static final String FIEBRE = "fiebre";
     public static final String DOLOR_DE_GARGANTA = "dolorDeGarganta";
 
@@ -18,18 +18,18 @@ public class SintomasTester {
     public void Test_001AgregarYPresentarSintomas(){
 
         listaDeSintomas.addSintoma(FIEBRE);
-        listaDeSintomas.addSintoma(TOZ);
+        listaDeSintomas.addSintoma(TOS);
         listaDeSintomas.addSintoma(DOLOR_DE_GARGANTA);
 
         listaDeSintomas.addCaso(FIEBRE);
         listaDeSintomas.addCaso(FIEBRE);
-        listaDeSintomas.addCaso(TOZ);
+        listaDeSintomas.addCaso(TOS);
 
         listaDeSintomas.writeSintomas();
 
-        assertEquals(3,listaDeSintomas.size());
+        assertEquals(5,listaDeSintomas.size());
 
-        assertFalse(listaDeSintomas.getCantidadDeCasos(FIEBRE)==listaDeSintomas.getCantidadDeCasos(TOZ));
+        assertFalse(listaDeSintomas.getCantidadDeCasos(FIEBRE)==listaDeSintomas.getCantidadDeCasos(TOS));
 
     }
 
@@ -38,7 +38,7 @@ public class SintomasTester {
     public void Test_002SintomaYaExiste(){
 
         listaDeSintomas.addSintoma(FIEBRE);
-        assertEquals(3,listaDeSintomas.size());
+        assertEquals(5,listaDeSintomas.size());
 
 
 
@@ -47,9 +47,9 @@ public class SintomasTester {
     public void Test_003Borte(){
 
         SistemaDeControl sist = new SistemaDeControl();
-        sist.brote("fiebre",10);
-        sist.brote("toz",5);
-        sist.brote("dolorDeGarganta",20);
+        sist.brote("fiebre",20);
+        sist.brote("tos",14);
+        sist.brote("dolorDeGarganta",0);
 
     }
 

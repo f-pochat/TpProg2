@@ -13,14 +13,10 @@ public class UserTester {
     public void Test001_UserCanPresentSymptoms(){
 
         User unUsuario = new User("1157670618");
-
         User otroUsuario = new User("1");
 
-        unUsuario.addSintoma("fiebre");
-        unUsuario.addSintoma("toz");
-
         Assert.assertEquals(2,unUsuario.getSintomasPresentados().size());
-        Assert.assertEquals(0,otroUsuario.getSintomasPresentados().size());
+        Assert.assertEquals(2,otroUsuario.getSintomasPresentados().size());
 
     }
 

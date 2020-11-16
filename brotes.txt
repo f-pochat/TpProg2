@@ -1,3 +1,2 @@
-hola3,20
-hola8,8
-hola,5
+fiebre,11
+tos,5
