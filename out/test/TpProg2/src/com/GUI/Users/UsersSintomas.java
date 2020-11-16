@@ -47,7 +47,7 @@ public class UsersSintomas extends JFrame {
     private void initComponents() {
         usuario = new User(LoginForm.tel);
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Ignacio Ferrari
+        // Generated using JFormDesigner Evaluation license - Fede Pocha
         label5 = new JLabel();
         button1 = new JButton();
         button4 = new JButton();
@@ -73,10 +73,7 @@ public class UsersSintomas extends JFrame {
         //---- button4 ----
         button4.setText("Back");
         button4.setFont(new Font("Doctor Glitch", Font.PLAIN, 12));
-        button4.addActionListener(e -> {
-			button2ActionPerformed(e);
-			backActionPerformed(e);
-		});
+        button4.addActionListener(e -> backActionPerformed(e));
 
         //---- button2 ----
         button2.setText("Remover sintoma");
@@ -92,7 +89,7 @@ public class UsersSintomas extends JFrame {
         contentPaneLayout.setHorizontalGroup(
             contentPaneLayout.createParallelGroup()
                 .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
-                    .addContainerGap(269, Short.MAX_VALUE)
+                    .addContainerGap(237, Short.MAX_VALUE)
                     .addGroup(contentPaneLayout.createParallelGroup()
                         .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
                             .addComponent(label5)
@@ -108,7 +105,7 @@ public class UsersSintomas extends JFrame {
                             .addComponent(button1)
                             .addGap(18, 18, 18)
                             .addComponent(button2)))
-                    .addContainerGap(133, Short.MAX_VALUE))
+                    .addContainerGap(164, Short.MAX_VALUE))
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
@@ -123,20 +120,19 @@ public class UsersSintomas extends JFrame {
                     .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(button2)
                         .addComponent(button1))
-                    .addContainerGap(68, Short.MAX_VALUE))
+                    .addContainerGap(61, Short.MAX_VALUE))
         );
         pack();
         setLocationRelativeTo(getOwner());
 
         //======== menu ========
         {
-            menu.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new
-            javax . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax
-            . swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java
-            . awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,java . awt
-            . Color .red ) ,menu. getBorder () ) ); menu. addPropertyChangeListener( new java. beans .
-            PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .
-            equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+            menu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
+            border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER
+            , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font
+            .BOLD ,12 ), java. awt. Color. red) ,menu. getBorder( )) ); menu. addPropertyChangeListener (
+            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r"
+            .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
             GroupLayout menuLayout = new GroupLayout(menu);
             menu.setLayout(menuLayout);
@@ -159,7 +155,7 @@ public class UsersSintomas extends JFrame {
 
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Ignacio Ferrari
+    // Generated using JFormDesigner Evaluation license - Fede Pocha
     private JLabel label5;
     private JButton button1;
     private JButton button4;

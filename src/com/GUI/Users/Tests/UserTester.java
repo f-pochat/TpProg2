@@ -28,7 +28,6 @@ public class UserTester {
         User otroUsuario = new User("1");
 
         unUsuario.addContact("1");
-
         otroUsuario.addContact("1157670618");
 
     }

@@ -66,8 +66,12 @@ public class AdminMain extends JFrame {
 
     private void button4ActionPerformed(ActionEvent e) {
         String telefono = JOptionPane.showInputDialog("Ingrese el telefono del usuario:");
-        if (!UserWriterReader.containsTel(telefono)){
+        if (!UserWriterReader.containsTel(telefono) &&  telefono != null){
             JOptionPane.showMessageDialog(null,"El telefono ingresado no pertenece a un usuario registrado");
+            return;
+        }
+        if (telefono == null ){
+            JOptionPane.showMessageDialog(null,"Ingrese un telefono valido");
             return;
         }
         User usuario = new User(telefono);
@@ -83,7 +87,7 @@ public class AdminMain extends JFrame {
         Admin administrador = new Admin(AdminLogin.tel);
 
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Ignacio Ferrari
+        // Generated using JFormDesigner Evaluation license - seba adaro
         label5 = new JLabel();
         label2 = new JLabel();
         button1 = new JButton();
@@ -118,11 +122,11 @@ public class AdminMain extends JFrame {
 
         //---- button3 ----
         button3.setText("Usuarios bloqueados");
-        button3.addActionListener(e -> { button3ActionPerformed(e); });
+        button3.addActionListener(e -> button3ActionPerformed(e));
 
         //---- button4 ----
         button4.setText("Bloquear un usuario");
-        button4.addActionListener(e -> { button4ActionPerformed(e); });
+        button4.addActionListener(e -> button4ActionPerformed(e));
 
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
@@ -141,9 +145,9 @@ public class AdminMain extends JFrame {
                             .addGap(38, 38, 38)
                             .addGroup(contentPaneLayout.createParallelGroup()
                                 .addComponent(button1, GroupLayout.PREFERRED_SIZE, 299, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(button2, GroupLayout.PREFERRED_SIZE, 299, GroupLayout.PREFERRED_SIZE)
                                 .addComponent(button3, GroupLayout.PREFERRED_SIZE, 299, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(button4, GroupLayout.PREFERRED_SIZE, 299, GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(button4, GroupLayout.PREFERRED_SIZE, 299, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(button2, GroupLayout.PREFERRED_SIZE, 299, GroupLayout.PREFERRED_SIZE))))
                     .addGap(138, 138, 138))
         );
         contentPaneLayout.setVerticalGroup(
@@ -153,22 +157,23 @@ public class AdminMain extends JFrame {
                         .addGroup(contentPaneLayout.createSequentialGroup()
                             .addGap(104, 104, 104)
                             .addComponent(label5)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE))
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE))
                         .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
-                            .addContainerGap(130, Short.MAX_VALUE)
+                            .addContainerGap(122, Short.MAX_VALUE)
                             .addComponent(label2)
                             .addGap(18, 18, 18)))
-                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(contentPaneLayout.createParallelGroup()
+                        .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 159, GroupLayout.PREFERRED_SIZE)
                         .addGroup(contentPaneLayout.createSequentialGroup()
+                            .addGap(6, 6, 6)
                             .addComponent(button1)
-                            .addGap(18, 18, 18)
-                            .addComponent(button2)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(button2)
+                            .addGap(12, 12, 12)
                             .addComponent(button4)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(button3))
-                        .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 159, GroupLayout.PREFERRED_SIZE))
-                    .addGap(123, 123, 123))
+                            .addGap(19, 19, 19)
+                            .addComponent(button3, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)))
+                    .addGap(107, 107, 107))
         );
         pack();
         setLocationRelativeTo(getOwner());
@@ -177,7 +182,7 @@ public class AdminMain extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Ignacio Ferrari
+    // Generated using JFormDesigner Evaluation license - seba adaro
     private JLabel label5;
     private JLabel label2;
     private JButton button1;

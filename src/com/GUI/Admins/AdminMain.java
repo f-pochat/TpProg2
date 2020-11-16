@@ -66,8 +66,12 @@ public class AdminMain extends JFrame {
 
     private void button4ActionPerformed(ActionEvent e) {
         String telefono = JOptionPane.showInputDialog("Ingrese el telefono del usuario:");
-        if (!UserWriterReader.containsTel(telefono)){
+        if (!UserWriterReader.containsTel(telefono) &&  telefono != null){
             JOptionPane.showMessageDialog(null,"El telefono ingresado no pertenece a un usuario registrado");
+            return;
+        }
+        if (telefono == null ){
+            JOptionPane.showMessageDialog(null,"Ingrese un telefono valido");
             return;
         }
         User usuario = new User(telefono);

@@ -76,7 +76,7 @@ public class LoginForm extends JFrame {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - unknown
+        // Generated using JFormDesigner Evaluation license - Fede Pocha
         label3 = new JLabel();
         telField = new JTextField();
         label4 = new JLabel();
@@ -177,7 +177,7 @@ public class LoginForm extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - unknown
+    // Generated using JFormDesigner Evaluation license - Fede Pocha
     private JLabel label3;
     private JTextField telField;
     private JLabel label4;

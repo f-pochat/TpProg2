@@ -1,4 +1,5 @@
 dolordegarganta,0
-fiebre,8
-tos,5
-dolordecabeza,0
+fiebre,12
+tos,7
+dolor de cabeza,1
+vomito,2

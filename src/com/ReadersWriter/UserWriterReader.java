@@ -10,7 +10,6 @@ import java.util.*;
  * FedePochat & SebaAdaro
  */
 public class UserWriterReader {
-    //PREGUNTAR EN CLASE DE CONSULTA SI SE PUEDE USAR STATIC AHI
 
     //Lee y se fija si el archivo users.txt ya contiene ese tel
     public static boolean containsTel(String tel){
